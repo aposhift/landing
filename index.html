@@ -53,6 +53,42 @@
   .btn-nav { background: var(--accent-grad); color: white !important; padding: 8px 18px; border-radius: 9px; font-size: .85rem; font-weight: 600; text-decoration: none; transition: opacity .2s, transform .15s; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
   .btn-nav:hover { opacity: .9; transform: translateY(-1px); color: white !important; }
 
+  /* ── BURGER MENU ── */
+  .burger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; background: none; border: none; cursor: pointer; padding: 4px; border-radius: 8px; z-index: 200; }
+  .burger span { display: block; height: 2px; background: var(--ink); border-radius: 2px; transition: transform .3s ease, opacity .3s ease, width .25s ease; }
+  .burger span:nth-child(1) { width: 22px; }
+  .burger span:nth-child(2) { width: 22px; }
+  .burger span:nth-child(3) { width: 22px; }
+  .burger:hover span:nth-child(1) { width: 14px; }
+  .burger:hover span:nth-child(2) { width: 22px; }
+  .burger:hover span:nth-child(3) { width: 18px; }
+  .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); width: 22px; }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); width: 22px; }
+
+  /* Fullscreen mobile menu */
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 150;
+    background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 0; opacity: 0; pointer-events: none;
+    transition: opacity .3s ease;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
+    color: var(--ink); text-decoration: none; padding: 16px 32px;
+    width: 100%; text-align: center; transition: color .2s;
+  }
+  .mobile-menu a:hover { color: var(--accent); }
+  .mobile-menu .btn-mobile-cta {
+    margin-top: 28px; background: var(--accent-grad); color: white !important;
+    padding: 16px 40px; border-radius: 12px; font-size: 1.1rem;
+    font-weight: 700; text-decoration: none; border: none;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.35);
+    width: auto;
+  }
+
   /* ── HERO ── */
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
@@ -78,11 +114,11 @@
   }
   .hero h1 em { font-style: normal; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero-sub {
-    font-size: 1.1rem; color: var(--ink-soft); max-width: 560px;
+    font-size: 1.1rem; color: var(--ink-soft); max-width: 740px;
     margin: 22px auto 0; font-weight: 400; line-height: 1.75;
     animation: fadeUp .6s .12s ease both;
   }
-  .hero-cta { display: flex; gap: 10px; margin-top: 36px; flex-wrap: wrap; justify-content: center; animation: fadeUp .6s .2s ease both; }
+  .hero-cta { display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap; justify-content: center; animation: fadeUp .6s .2s ease both; }
   .btn-primary { background: var(--accent-grad); color: white; padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: opacity .2s, transform .15s; box-shadow: 0 4px 16px rgba(37,99,235,0.35); }
   .btn-primary:hover { opacity: .9; transform: translateY(-2px); }
   .btn-secondary { background: var(--card); color: var(--ink); padding: 14px 28px; border-radius: 10px; font-size: 1rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); cursor: pointer; transition: border-color .2s, transform .15s, box-shadow .2s; box-shadow: var(--shadow); }
@@ -101,6 +137,51 @@
     box-shadow: var(--shadow);
   }
   .pill-icon { font-size: .95rem; }
+
+  /* ── HERO WIDGET ── */
+  .hero-widget-wrap {
+    width: 100%; max-width: 480px;
+    margin: 28px auto 0;
+    animation: fadeUp .6s .3s ease both;
+  }
+  .hero-widget {
+    width: 100%; background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: var(--shadow-lg); text-align: left;
+  }
+  .hw-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 16px; background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .hw-dots { display: flex; gap: 5px; }
+  .hw-dots span { width: 10px; height: 10px; border-radius: 50%; }
+  .hw-dots span:nth-child(1){background:#FF5F57}
+  .hw-dots span:nth-child(2){background:#FFBD2E}
+  .hw-dots span:nth-child(3){background:#28CA41}
+  .hw-title { flex: 1; font-family: var(--mono); font-size: .68rem; color: var(--ink-soft); letter-spacing: .03em; }
+  .hw-kw { font-family: var(--mono); font-size: .65rem; background: var(--accent-light); color: var(--accent); border: 1px solid #bfdbfe; padding: 2px 8px; border-radius: 20px; }
+  .hw-steps { padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .hw-step {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .8rem; color: var(--ink-soft);
+    opacity: .35; transition: opacity .3s ease;
+  }
+  .hw-step.active { opacity: 1; }
+  .hw-step.done { opacity: 1; color: var(--ink); }
+  .hw-icon { font-size: .7rem; width: 16px; text-align: center; flex-shrink: 0; transition: all .2s; }
+  .hw-step.active .hw-icon { animation: spin .7s linear infinite; display: inline-block; }
+  .hw-label { flex: 1; }
+  .hw-check { font-size: .75rem; color: var(--success); width: 16px; text-align: right; flex-shrink: 0; }
+  .hw-result {
+    margin: 0 16px 14px; padding: 10px 14px;
+    background: var(--success-light); border: 1px solid #bbf7d0;
+    border-radius: 10px; font-size: .8rem; color: var(--success);
+    display: flex; align-items: center; gap: 8px;
+    opacity: 0; transition: opacity .4s ease;
+  }
+  .hw-result.show { opacity: 1; }
+  .hw-result-icon { font-size: 1rem; flex-shrink: 0; }
 
   /* ── SOCIAL PROOF BAR ── */
   .proof-bar { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 24px; }
@@ -289,13 +370,13 @@
 
   /* ── PRICING ── */
   .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; align-items: start; }
-  .pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; }
+  .pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); transition: transform .2s, box-shadow .2s; text-align: left; }
   .pricing-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
   .pricing-card.popular { background: var(--accent-grad); border: none; box-shadow: 0 6px 24px rgba(37,99,235,0.35); position: relative; transform: scale(1.03); }
   .pricing-card.popular:hover { transform: scale(1.03) translateY(-3px); }
   .popular-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--warn-light); color: var(--warn); border: 1px solid #fde68a; font-family: var(--mono); font-size: .65rem; font-weight: 500; padding: 4px 14px; border-radius: 20px; white-space: nowrap; letter-spacing: .04em; }
-  .pricing-plan { font-family: var(--mono); font-size: .7rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
-  .pricing-card.popular .pricing-plan { color: rgba(255,255,255,.65); }
+  .pricing-plan { font-family: var(--serif) !important; font-size: 1.6rem !important; font-weight: 800 !important; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em !important; text-transform: none !important; }
+  .pricing-card.popular .pricing-plan { color: rgba(255,255,255,.9); }
   .pricing-price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 4px; }
   .price-amount { font-family: var(--serif); font-size: 2.4rem; font-weight: 800; color: var(--ink); }
   .pricing-card.popular .price-amount { color: white; }
@@ -357,22 +438,45 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .burger { display: flex; }
+    .mobile-menu { display: flex; }
     .benefits-grid { grid-template-columns: 1fr 1fr; }
     .benefit-card.highlight { grid-column: span 2; }
     .how-grid { grid-template-columns: 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
     .pricing-grid { grid-template-columns: 1fr; }
     .pricing-card.popular { transform: scale(1); }
     .pain-grid { grid-template-columns: 1fr; }
     .compare-table { font-size: .82rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .section-title { font-size: 1.8rem; }
   }
   @media (max-width: 680px) {
     nav { padding: 0 20px; }
     .nav-links { display: none; }
+    .burger { display: flex; }
+    .mobile-menu { display: flex; }
     .mockup-app { grid-template-columns: 1fr; }
     .app-sidebar { display: none; }
     .benefits-grid { grid-template-columns: 1fr; }
     .benefit-card.highlight { grid-column: span 1; }
+    .hero h1 { font-size: 1.9rem; }
+    .hero-sub { font-size: .9rem; }
+    .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+    .hero-pills { gap: 8px; }
+    .pill { font-size: .78rem; padding: 7px 12px; }
+    .section-title { font-size: 1.5rem; }
+    .section-inner { padding: 64px 20px; }
+    .compare-table th, .compare-table td { padding: 10px 12px; font-size: .78rem; }
+    .pricing-grid { gap: 12px; }
+    .testimonials-grid { gap: 12px; }
+    .cta-form { flex-direction: column; }
+    .cta-input { width: 100%; }
+    .btn-cta { width: 100%; text-align: center; }
+    .footer-inner { flex-direction: column; text-align: center; gap: 12px; }
+    .proof-inner { flex-direction: column; gap: 10px; align-items: center; }
+    .faq-question { font-size: .88rem; }
   }
 </style>
 </head>
@@ -388,9 +492,25 @@
     <a href="#benefits">Vorteile</a>
     <a href="#vergleich">Vorher/Nachher</a>
     <a href="#pricing">Preise</a>
-    <a href="#demo" class="btn-nav">Kostenlosen Zugang anfragen →</a>
+    <a href="#demo" class="btn-nav">1 Monat kostenlos testen →</a>
   </div>
+  <button class="burger" id="burgerBtn" onclick="toggleMenu()" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE FULLSCREEN MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button onclick="toggleMenu()" style="position:fixed;top:12px;right:20px;background:none;border:none;cursor:pointer;padding:4px;width:36px;height:36px;display:flex;flex-direction:column;justify-content:center;gap:5px;border-radius:8px;">
+    <span style="display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transform:translateY(3.5px) rotate(45deg);"></span>
+    <span style="display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transform:translateY(-3.5px) rotate(-45deg);"></span>
+  </button>
+  <a href="#benefits" onclick="toggleMenu()">Vorteile</a>
+  <a href="#vergleich" onclick="toggleMenu()">Vorher/Nachher</a>
+  <a href="#pricing" onclick="toggleMenu()">Preise</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#demo" class="btn-mobile-cta" onclick="toggleMenu()">1 Monat kostenlos testen →</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -398,11 +518,37 @@
   <div class="hero-grid"></div>
 
   <h1>Dienstpläne für Apotheken –<br><em>in einem Bruchteil der Zeit.</em></h1>
-  <p class="hero-sub">Fair, nachvollziehbar und mitarbeiterfreundlich. Weniger Diskussionen im Team, weniger Aufwand für die Leitung, mehr Planungssicherheit bei Ausfällen.</p>
+  <p class="hero-sub">Fair, nachvollziehbar und mitarbeiterfreundlich. Weniger Diskussionen im Team, weniger Aufwand für die Leitung – ab 49 € / Monat.</p>
+
+  <!-- Animated plan generation widget – floats, doesn't push CTAs -->
+  <div class="hero-widget-wrap">
+    <div class="hero-widget" id="heroWidget">
+      <div class="hw-header">
+        <div class="hw-dots"><span></span><span></span><span></span></div>
+        <div class="hw-title">ApoShift · Plan wird erstellt …</div>
+        <div class="hw-kw">KW 15</div>
+      </div>
+      <div class="hw-steps">
+        <div class="hw-step" id="hws1"><span class="hw-icon">○</span><span class="hw-label">Öffnungszeiten & Mindestbesetzung laden</span><span class="hw-check"></span></div>
+        <div class="hw-step" id="hws2"><span class="hw-icon">○</span><span class="hw-label">Urlaub & Abwesenheiten berücksichtigen</span><span class="hw-check"></span></div>
+        <div class="hw-step" id="hws3"><span class="hw-icon">○</span><span class="hw-label">Wünsche & Präferenzen einarbeiten</span><span class="hw-check"></span></div>
+        <div class="hw-step" id="hws4"><span class="hw-icon">○</span><span class="hw-label">Approbationspflicht prüfen</span><span class="hw-check"></span></div>
+        <div class="hw-step" id="hws5"><span class="hw-icon">○</span><span class="hw-label">Arbeitszeitgesetz & Ruhezeiten prüfen</span><span class="hw-check"></span></div>
+        <div class="hw-step" id="hws6"><span class="hw-icon">○</span><span class="hw-label">Samstage fair verteilen</span><span class="hw-check"></span></div>
+      </div>
+      <div class="hw-result" id="hwResult">
+        <span class="hw-result-icon">✓</span>
+        <span>Plan fertig &nbsp;·&nbsp; <strong>0 Konflikte</strong> &nbsp;·&nbsp; <strong>7 von 7 Wünschen</strong> erfüllt &nbsp;·&nbsp; <strong>~12 Sek.</strong></span>
+      </div>
+    </div>
+  </div>
 
   <div class="hero-cta">
-    <a href="#demo" class="btn-primary">Jetzt kostenlos testen →</a>
+    <a href="#demo" class="btn-primary">1 Monat kostenlos testen →</a>
     <a href="#benefits" class="btn-secondary">Wie es Ihren Alltag verändert</a>
+  </div>
+  <div style="margin-top:14px;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em;animation:fadeUp .6s .28s ease both;">
+    🔒 &nbsp;KEINE KREDITKARTE · KEIN RISIKO · JEDERZEIT KÜNDBAR
   </div>
 
   <!-- Benefit pills instead of tech features -->
@@ -421,7 +567,7 @@
     <div class="proof-item"><div class="proof-dot"></div> Bereits in über 40 Apotheken im Einsatz</div>
     <div class="proof-item"><div class="proof-dot"></div> Ø 3,5 Std. Zeitersparnis pro Woche</div>
     <div class="proof-item"><div class="proof-dot"></div> DSGVO-konform · Server in Deutschland</div>
-    <div class="proof-item"><div class="proof-dot"></div> Keine Mindestlaufzeit</div>
+    <div class="proof-item"><div class="proof-dot"></div> Keine Kreditkarte · Keine Mindestlaufzeit</div>
   </div>
 </div>
 
@@ -451,7 +597,7 @@
           <div class="sidebar-section">
             <div class="sidebar-label">Auswertung</div>
             <div class="sidebar-item">
-              <svg fill="none" viewBox="0 0 15 15" stroke="currentColor" stroke-width="1.5"><path d="M2 12l3.5-4 3 2.5 3-5 2 3"/></svg>Fairness-Report
+              <svg fill="none" viewBox="0 0 15 15" stroke="currentColor" stroke-width="1.5"><path d="M2 12l3.5-4 3 2.5 3-5 2 3"/></svg>Auswertung
             </div>
             <div class="sidebar-item">
               <svg fill="none" viewBox="0 0 15 15" stroke="currentColor" stroke-width="1.5"><path d="M5 7.5h5M5 5h5M5 10h3"/><rect x="2" y="2" width="11" height="11" rx="2"/></svg>Export
@@ -460,42 +606,120 @@
         </div>
         <div class="app-main">
           <div class="app-topbar">
-            <div class="app-title">KW 12 — März 2026</div>
+            <div>
+              <div class="app-title">KW 15 — 06.04.–11.04.2026</div>
+              <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink-soft);margin-top:2px;">inkl. Ostermontag</div>
+            </div>
             <div class="app-actions">
               <button class="app-btn app-btn-ghost">Veröffentlichen</button>
               <button class="app-btn app-btn-primary">Plan erstellen</button>
             </div>
           </div>
           <div class="app-status-row">
-            <div class="status-chip green"><div class="status-chip-dot"></div>Alle Wünsche berücksichtigt</div>
+            <div class="status-chip green"><div class="status-chip-dot"></div>Stunden im Rahmen</div>
             <div class="status-chip green"><div class="status-chip-dot"></div>Besetzung gesichert</div>
-            <div class="status-chip blue"><div class="status-chip-dot"></div>Samstage fair verteilt</div>
+            <div class="status-chip green"><div class="status-chip-dot"></div>Apotheker abgedeckt</div>
+            <div class="status-chip blue"><div class="status-chip-dot"></div>Sa: 4 Mitarbeiter</div>
           </div>
-          <div class="week-grid">
-            <div class="week-header"></div>
-            <div class="week-header">MO</div><div class="week-header today">DI</div>
-            <div class="week-header">MI</div><div class="week-header">DO</div>
-            <div class="week-header">FR</div><div class="week-header">SA</div><div class="week-header">SO</div>
+          <div class="week-grid" style="grid-template-columns:120px repeat(7,1fr) 52px;">
+            <!-- Header -->
+            <div class="week-header" style="text-align:left;padding-left:4px;">MITARBEITER</div>
+            <div class="week-header" style="color:#f59e0b;">MO<br><span style="font-size:.55rem;opacity:.7">Feiertag</span></div>
+            <div class="week-header today">DI<br><span style="font-size:.55rem;">07.04.</span></div>
+            <div class="week-header">MI<br><span style="font-size:.55rem;">08.04.</span></div>
+            <div class="week-header">DO<br><span style="font-size:.55rem;">09.04.</span></div>
+            <div class="week-header">FR<br><span style="font-size:.55rem;">10.04.</span></div>
+            <div class="week-header">SA<br><span style="font-size:.55rem;">11.04.</span></div>
+            <div class="week-header">SO</div>
+            <div class="week-header" style="font-size:.58rem;">Σ STD.</div>
 
-            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#2563eb,#7c3aed)">SK</div>Dr. Klein</div>
-            <div class="shift-cell shift-morning">08–14</div><div class="shift-cell shift-morning">08–14</div>
-            <div class="shift-cell shift-off">Frei</div><div class="shift-cell shift-morning">08–14</div>
-            <div class="shift-cell shift-morning">08–14</div><div class="shift-cell shift-late">10–16</div><div class="shift-cell shift-off">Frei</div>
+            <!-- Dr. Claudia Mayer -->
+            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#2563eb,#7c3aed)">CM</div><span><strong style="display:block;font-size:.7rem;">Dr. C. Mayer</strong><span style="font-size:.6rem;color:var(--ink-soft);">Apoth.</span></span></div>
+            <div class="shift-cell shift-off" style="font-size:.58rem;">Feiertag</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">08:00–13</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:4px;"><span style="font-family:var(--mono);font-size:.68rem;font-weight:700;color:#d97706;">37,0h</span><span style="font-family:var(--mono);font-size:.55rem;color:#dc2626;">-3,0h</span></div>
 
-            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#059669,#0284c7)">TM</div>T. Müller</div>
-            <div class="shift-cell shift-late">12–18</div><div class="shift-cell shift-late">12–18</div>
-            <div class="shift-cell shift-morning">08–14</div><div class="shift-cell shift-late">12–18</div>
-            <div class="shift-cell shift-off">Frei</div><div class="shift-cell shift-off">Frei ♥</div><div class="shift-cell shift-off">Frei</div>
+            <!-- Dr. Stefan Wolf -->
+            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#059669,#0284c7)">SW</div><span><strong style="display:block;font-size:.7rem;">Dr. S. Wolf</strong><span style="font-size:.6rem;color:var(--ink-soft);">Apoth.</span></span></div>
+            <div class="shift-cell shift-off" style="font-size:.58rem;">Feiertag</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">12:30–16</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:4px;"><span style="font-family:var(--mono);font-size:.68rem;font-weight:700;color:#d97706;">35,5h</span><span style="font-family:var(--mono);font-size:.55rem;color:#dc2626;">-4,5h</span></div>
 
-            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#7c3aed,#db2777)">LB</div>L. Berger</div>
-            <div class="shift-cell shift-off">Frei</div><div class="shift-cell shift-morning">08–14</div>
-            <div class="shift-cell shift-late">12–18</div><div class="shift-cell shift-morning">08–14</div>
-            <div class="shift-cell shift-wish">12–18 ♥</div><div class="shift-cell shift-morning">08–14</div><div class="shift-cell shift-off">Frei</div>
+            <!-- Nicole Schäfer -->
+            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#7c3aed,#db2777)">NS</div><span><strong style="display:block;font-size:.7rem;">N. Schäfer</strong><span style="font-size:.6rem;color:var(--ink-soft);">PTA</span></span></div>
+            <div class="shift-cell shift-off" style="font-size:.58rem;">Feiertag</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">08:00–13</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:4px;"><span style="font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--success);">36,5h</span><span style="font-family:var(--mono);font-size:.55rem;color:var(--success);">✓ ok</span></div>
 
-            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#d97706,#dc2626)">AW</div>A. Wagner</div>
-            <div class="shift-cell shift-morning">08–14</div><div class="shift-cell shift-off">Urlaub</div>
-            <div class="shift-cell shift-off">Urlaub</div><div class="shift-cell shift-off">Urlaub</div>
-            <div class="shift-cell shift-morning">08–14</div><div class="shift-empty"></div><div class="shift-cell shift-off">Frei</div>
+            <!-- Björn Peters -->
+            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#d97706,#dc2626)">BP</div><span><strong style="display:block;font-size:.7rem;">B. Peters</strong><span style="font-size:.6rem;color:var(--ink-soft);">PTA</span></span></div>
+            <div class="shift-cell shift-off" style="font-size:.58rem;">Feiertag</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">12:30–16</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:4px;"><span style="font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--success);">34,5h</span><span style="font-family:var(--mono);font-size:.55rem;color:var(--success);">✓ ok</span></div>
+
+            <!-- Anja Krause -->
+            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">AK</div><span><strong style="display:block;font-size:.7rem;">A. Krause</strong><span style="font-size:.6rem;color:var(--ink-soft);">PTA</span></span></div>
+            <div class="shift-cell shift-off" style="font-size:.58rem;">Feiertag</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:4px;"><span style="font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--success);">31,5h</span><span style="font-family:var(--mono);font-size:.55rem;color:var(--success);">✓ ok</span></div>
+
+            <!-- Thomas Engel -->
+            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#be185d,#9333ea)">TE</div><span><strong style="display:block;font-size:.7rem;">T. Engel</strong><span style="font-size:.6rem;color:var(--ink-soft);">PKA</span></span></div>
+            <div class="shift-cell shift-off" style="font-size:.58rem;">Feiertag</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-late" style="font-size:.6rem;">13:30–20</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:4px;"><span style="font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--success);">24,3h</span><span style="font-family:var(--mono);font-size:.55rem;color:var(--success);">✓ ok</span></div>
+
+            <!-- Monika Roth -->
+            <div class="emp-name"><div class="emp-avatar" style="background:linear-gradient(135deg,#dc2626,#ea580c)">MR</div><span><strong style="display:block;font-size:.7rem;">M. Roth</strong><span style="font-size:.6rem;color:var(--ink-soft);">PKA</span></span></div>
+            <div class="shift-cell shift-off" style="font-size:.58rem;">Feiertag</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-morning" style="font-size:.6rem;">07:30–14</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div class="shift-cell shift-off" style="font-size:.6rem;">Frei</div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;padding-right:4px;"><span style="font-family:var(--mono);font-size:.68rem;font-weight:700;color:var(--success);">18,8h</span><span style="font-family:var(--mono);font-size:.55rem;color:var(--success);">✓ ok</span></div>
+
+            <!-- Besetzung footer -->
+            <div style="font-family:var(--mono);font-size:.6rem;font-weight:600;color:var(--ink-soft);padding:6px 0 0;grid-column:1;">BESETZUNG</div>
+            <div style="padding:6px 0 0;text-align:center;font-family:var(--mono);font-size:.58rem;color:var(--ink-soft);">–</div>
+            <div style="padding:6px 2px 0;"><div style="display:flex;gap:2px;justify-content:center;"><span style="background:#dbeafe;color:#1d4ed8;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">F4</span><span style="background:#f5f3ff;color:#6d28d9;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">S3</span><span style="background:var(--success-light);color:var(--success);padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">A✓</span></div><div style="height:3px;background:var(--success);border-radius:2px;margin-top:4px;"></div><div style="font-family:var(--mono);font-size:.55rem;color:var(--success);text-align:center;">7✓</div></div>
+            <div style="padding:6px 2px 0;"><div style="display:flex;gap:2px;justify-content:center;"><span style="background:#dbeafe;color:#1d4ed8;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">F4</span><span style="background:#f5f3ff;color:#6d28d9;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">S3</span><span style="background:var(--success-light);color:var(--success);padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">A✓</span></div><div style="height:3px;background:var(--success);border-radius:2px;margin-top:4px;"></div><div style="font-family:var(--mono);font-size:.55rem;color:var(--success);text-align:center;">7✓</div></div>
+            <div style="padding:6px 2px 0;"><div style="display:flex;gap:2px;justify-content:center;"><span style="background:#dbeafe;color:#1d4ed8;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">F3</span><span style="background:#f5f3ff;color:#6d28d9;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">S3</span><span style="background:var(--success-light);color:var(--success);padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">A✓</span></div><div style="height:3px;background:var(--success);border-radius:2px;margin-top:4px;"></div><div style="font-family:var(--mono);font-size:.55rem;color:var(--success);text-align:center;">6✓</div></div>
+            <div style="padding:6px 2px 0;"><div style="display:flex;gap:2px;justify-content:center;"><span style="background:#dbeafe;color:#1d4ed8;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">F3</span><span style="background:#f5f3ff;color:#6d28d9;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">S2</span><span style="background:var(--success-light);color:var(--success);padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">A✓</span></div><div style="height:3px;background:var(--success);border-radius:2px;margin-top:4px;"></div><div style="font-family:var(--mono);font-size:.55rem;color:var(--success);text-align:center;">5✓</div></div>
+            <div style="padding:6px 2px 0;"><div style="display:flex;gap:2px;justify-content:center;"><span style="background:#dbeafe;color:#1d4ed8;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">F2</span><span style="background:#f5f3ff;color:#6d28d9;padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">S2</span><span style="background:var(--success-light);color:var(--success);padding:1px 4px;border-radius:3px;font-family:var(--mono);font-size:.55rem;">A✓</span></div><div style="height:3px;background:var(--success);border-radius:2px;margin-top:4px;"></div><div style="font-family:var(--mono);font-size:.55rem;color:var(--success);text-align:center;">4✓</div></div>
+            <div style="padding:6px 0 0;text-align:center;font-family:var(--mono);font-size:.58rem;color:var(--ink-soft);">–</div>
+            <div></div>
           </div>
         </div>
       </div>
@@ -535,7 +759,7 @@
         <span class="pain-num">04</span>
         <div>
           <h3>Chaos bei Ausfällen</h3>
-          <p>Jemand meldet sich krank. Wer springt ein? Die Suche beginnt von vorne – per Telefon, per WhatsApp, per Hoffnung.</p>
+          <p>Jemand meldet sich krank. Wer springt ein? Die Suche beginnt von vorne – Telefon für Telefon, Absage für Absage. Manchmal dauert das Stunden.</p>
         </div>
       </div>
       <div class="pain-item">
@@ -584,6 +808,12 @@
       </div>
 
       <div class="benefit-card reveal">
+        <div class="benefit-icon">😌</div>
+        <h3>Weniger Planungsstress am Wochenende</h3>
+        <p>Kein Sonntagabend mehr am Schreibtisch. ApoShift erledigt die Arbeit unter der Woche – in einem Bruchteil der Zeit, die Sie früher gebraucht haben.</p>
+      </div>
+
+      <div class="benefit-card reveal">
         <div class="benefit-icon">❤️</div>
         <h3>Wünsche werden wirklich berücksichtigt</h3>
         <p>Jeder Mitarbeitende kann Präferenzen hinterlegen. ApoShift versucht immer, diese einzuhalten – und zeigt transparent, wenn es nicht geht.</p>
@@ -600,6 +830,13 @@
         <h3>Rechtssicherheit ohne Nachdenken</h3>
         <p>Ruhezeiten, Approbationspflicht, Arbeitszeitgesetz – alles wird automatisch geprüft. Kein Plan verlässt ApoShift mit vermeidbaren Fehlern.</p>
       </div>
+
+      <div class="benefit-card reveal">
+        <div class="benefit-icon">🗂️</div>
+        <h3>Kein Zettelchaos – alles an einem Ort</h3>
+        <p>Wünsche, Verfügbarkeiten, Pläne, Benachrichtigungen – alles zentral in ApoShift. Kein Excel, keine Gruppenchat-Verwirrung, kein Heft auf dem Tresen.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -824,22 +1061,31 @@
             </div>
           </div>
           <div class="how-visual">
-            <div class="how-visual-title">Ausfall-Management · Heute</div>
-            <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:9px;padding:11px 14px;font-size:.8rem;color:#dc2626;font-weight:600;margin-bottom:10px">
-              ⚠ A. Wagner krank gemeldet · Do 13.03.
-            </div>
-            <div style="font-family:var(--mono);font-size:.65rem;color:var(--ink-soft);letter-spacing:.04em;margin-bottom:8px;text-transform:uppercase">Verfügbare Einspringer</div>
-            <div style="display:flex;flex-direction:column;gap:6px">
-              <div style="display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--success-light);border:1px solid #bbf7d0;border-radius:8px;font-size:.8rem">
-                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#0ea5e9,#6366f1);flex-shrink:0"></div>
-                <span style="flex:1;font-weight:500">S. Roth</span>
-                <span style="color:var(--success);font-size:.75rem">Frei · 16 Std. diese Wo.</span>
+            <div class="how-visual-title">Teambenachrichtigung · KW 12 veröffentlicht</div>
+            <div style="display:flex;flex-direction:column;gap:7px">
+              <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--success-light);border:1px solid #bbf7d0;border-radius:8px;font-size:.8rem">
+                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#7c3aed);flex-shrink:0"></div>
+                <span style="flex:1;font-weight:500">Dr. Klein</span>
+                <span style="color:var(--success);font-size:.75rem">✓ E-Mail gesendet</span>
               </div>
-              <div style="display:flex;align-items:center;gap:10px;padding:8px 11px;background:var(--bg);border-radius:8px;font-size:.8rem">
+              <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--success-light);border:1px solid #bbf7d0;border-radius:8px;font-size:.8rem">
+                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#059669,#0284c7);flex-shrink:0"></div>
+                <span style="flex:1;font-weight:500">T. Müller</span>
+                <span style="color:var(--success);font-size:.75rem">✓ E-Mail gesendet</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--success-light);border:1px solid #bbf7d0;border-radius:8px;font-size:.8rem">
                 <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#db2777);flex-shrink:0"></div>
                 <span style="flex:1;font-weight:500">L. Berger</span>
-                <span style="color:var(--ink-soft);font-size:.75rem">Frei · 30 Std. diese Wo.</span>
+                <span style="color:var(--success);font-size:.75rem">✓ E-Mail gesendet</span>
               </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--success-light);border:1px solid #bbf7d0;border-radius:8px;font-size:.8rem">
+                <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#d97706,#dc2626);flex-shrink:0"></div>
+                <span style="flex:1;font-weight:500">A. Wagner</span>
+                <span style="color:var(--success);font-size:.75rem">✓ E-Mail gesendet</span>
+              </div>
+            </div>
+            <div style="margin-top:12px;padding:10px 14px;background:var(--accent-light);border:1px solid #bfdbfe;border-radius:9px;font-size:.78rem;color:var(--accent)">
+              📬 Plan an alle 4 Mitarbeitenden verschickt – kein Telefonieren, keine Verwirrung.
             </div>
           </div>
         </div>
@@ -880,9 +1126,9 @@
           <td class="col-after"><span class="tag-good">✓ Systematisch & dokumentiert</span></td>
         </tr>
         <tr>
-          <td>Ausfall-Management</td>
-          <td class="col-before"><span class="tag-bad">✕ Telefon & WhatsApp</span></td>
-          <td class="col-after"><span class="tag-good">✓ Verfügbare sofort sichtbar</span></td>
+          <td>Planänderungen kommunizieren</td>
+          <td class="col-before"><span class="tag-bad">✕ Telefonmarathon</span></td>
+          <td class="col-after"><span class="tag-good">✓ Automatisch per E-Mail</span></td>
         </tr>
         <tr>
           <td>Rechtliche Prüfung</td>
@@ -945,10 +1191,10 @@
   <div class="section-inner" style="text-align:center">
     <span class="section-tag reveal">Preise</span>
     <h2 class="section-title reveal" style="margin:0 auto">Weniger als eine Stunde Ihres <em>Zeitaufwands pro Monat.</em></h2>
-    <p class="section-sub reveal" style="margin:12px auto 0">14 Tage kostenlos testen. Keine Kreditkarte erforderlich. Jederzeit kündbar.</p>
+    <p class="section-sub reveal" style="margin:12px auto 0">1 Monat kostenlos testen. Keine Kreditkarte erforderlich. Jederzeit kündbar.</p>
     <div class="pricing-grid">
       <div class="pricing-card reveal">
-        <div class="pricing-plan">Starter</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:800;color:#0d1117;margin-bottom:10px;letter-spacing:-0.02em;text-transform:none;">Starter</h3>
         <div class="pricing-price"><span class="price-amount">49</span><span class="price-period">€ / Monat</span></div>
         <div class="pricing-desc">Für kleine Apotheken bis 8 Mitarbeitende</div>
         <div class="pricing-divider"></div>
@@ -963,22 +1209,22 @@
       </div>
       <div class="pricing-card popular reveal">
         <div class="popular-badge">⭐ BELIEBTESTER PLAN</div>
-        <div class="pricing-plan">Pro</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:800;color:white;margin-bottom:10px;letter-spacing:-0.02em;text-transform:none;">Pro</h3>
         <div class="pricing-price"><span class="price-amount">99</span><span class="price-period">€ / Monat</span></div>
         <div class="pricing-desc">Für wachsende Teams mit vollem Betrieb</div>
         <div class="pricing-divider"></div>
         <ul class="pricing-features">
           <li>Unbegrenzte Mitarbeitende</li>
-          <li>Fairness-Auswertung & Reports</li>
-          <li>Ausfall-Management</li>
-          <li>Jahresplanung & Urlaubsübersicht</li>
-          <li>DATEV-Export</li>
+          <li>Wünsche & Präferenzen aller Mitarbeitenden</li>
+          <li>Erweiterte Schichtmodelle</li>
+          <li>PDF & Excel Export</li>
+          <li>Teambenachrichtigung per E-Mail</li>
           <li>Prioritäts-Support</li>
         </ul>
-        <a href="#demo" class="btn-pricing btn-pricing-white">Demo buchen →</a>
+        <a href="#demo" class="btn-pricing btn-pricing-white">1 Monat kostenlos testen →</a>
       </div>
       <div class="pricing-card reveal">
-        <div class="pricing-plan">Filialverbund</div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:800;color:#0d1117;margin-bottom:10px;letter-spacing:-0.02em;text-transform:none;">Filialverbund</h3>
         <div class="pricing-price"><span class="price-amount" style="font-size:1.5rem">Auf Anfrage</span></div>
         <div class="pricing-desc">Für Verbünde mit 2+ Standorten</div>
         <div class="pricing-divider"></div>
@@ -1002,8 +1248,12 @@
     <h2 class="section-title reveal" style="margin:0 auto">Häufige Fragen.</h2>
     <div class="faq-list">
       <div class="faq-item reveal">
-        <button class="faq-question" onclick="toggleFaq(this)">Wie lange dauert es, bis ich den ersten Plan erstellt habe?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>Die meisten Apotheken haben ihren ersten Plan innerhalb von 60 Minuten nach der Einrichtung fertig. Sie geben Ihr Team ein, hinterlegen die Öffnungszeiten und die Mindeststärke – dann auf Knopfdruck. Unser Onboarding-Team begleitet Sie dabei.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)">Wie lange dauert die Einrichtung?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Die einmalige Einrichtung dauert etwa 30 Minuten – Team erfassen, Öffnungszeiten hinterlegen, Mindeststärke festlegen. Danach erstellt ApoShift jeden neuen Dienstplan in rund 15 Minuten. Unser Support begleitet Sie beim Einstieg.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Was, wenn mein Team das nicht nutzen will?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Das hören wir oft – und die Erfahrung zeigt: Wenn Mitarbeitende merken, dass ihre Wünsche wirklich berücksichtigt werden und der Plan fair ist, kommt die Akzeptanz von alleine. ApoShift ist kein Kontrollwerkzeug, sondern eines das dem ganzen Team das Leben leichter macht.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-question" onclick="toggleFaq(this)">Kann ich den generierten Plan auch manuell anpassen?<span class="faq-icon">+</span></button>
@@ -1018,8 +1268,8 @@
         <div class="faq-answer"><p>Ausschließlich auf deutschen Servern, DSGVO-konform. Sie bleiben Eigentümer Ihrer Daten. Alles ist jederzeit exportierbar und auf Wunsch löschbar.</p></div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-question" onclick="toggleFaq(this)">Was passiert, wenn sich jemand spontan krankmeldet?<span class="faq-icon">+</span></button>
-        <div class="faq-answer"><p>ApoShift zeigt Ihnen sofort, wer an diesem Tag noch nicht eingeplant ist, wer kürzlich wenig gearbeitet hat und wer Bereitschaft angezeigt hat. Sie sehen auf einen Blick, wen Sie fragen können – ohne Telefonliste und ohne Rätselraten.</p></div>
+        <button class="faq-question" onclick="toggleFaq(this)">Was passiert nach dem kostenlosen Monat?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Nach dem Testmonat entscheiden Sie, ob Sie weitermachen möchten. Kein automatischer Übergang, keine versteckten Kosten. Sie bekommen rechtzeitig eine Erinnerung und wählen dann einfach das passende Paket – oder Sie hören auf. Kein Druck, kein Kleingedrucktes.</p></div>
       </div>
     </div>
   </div>
@@ -1028,14 +1278,14 @@
 <!-- CTA -->
 <section class="cta-section" id="demo">
   <div class="section-inner" style="position:relative;z-index:1">
-    <span class="section-tag">Jetzt ausprobieren</span>
-    <h2>Erstellen Sie Ihren nächsten Dienstplan<br><em>in 15 Minuten.</em></h2>
-    <p>Kostenlos testen, kein Risiko. Die meisten Apotheken sind innerhalb einer Stunde startklar.</p>
+    <span class="section-tag">Jetzt starten</span>
+    <h2>Nächste Woche schon entspannter planen –<br><em>Ihr erster Plan in 15 Minuten.</em></h2>
+    <p>1 Monat kostenlos testen. Kein Risiko, keine Kreditkarte. Die meisten Apotheken sind innerhalb einer Stunde startklar.</p>
     <div class="cta-form">
       <input type="email" class="cta-input" placeholder="ihre@apotheke.de">
-      <button class="btn-cta">Kostenlos starten →</button>
+      <button class="btn-cta">1 Monat kostenlos starten →</button>
     </div>
-    <div class="cta-trust">🔒 &nbsp;KEIN SPAM · KEINE KREDITKARTE · 14 TAGE KOSTENLOS</div>
+    <div class="cta-trust">🔒 &nbsp;KEIN SPAM · KEINE KREDITKARTE · 1 MONAT KOSTENLOS · JEDERZEIT KÜNDBAR</div>
   </div>
 </section>
 
@@ -1051,9 +1301,58 @@
 </footer>
 
 <script>
+  // Hero widget animation
+  function runHeroWidget() {
+    const steps = [1,2,3,4,5,6];
+    const delays = [400, 900, 1500, 2100, 2700, 3200];
+    steps.forEach((n, i) => {
+      const el = document.getElementById('hws' + n);
+      setTimeout(() => {
+        // deactivate previous
+        if (i > 0) {
+          const prev = document.getElementById('hws' + steps[i-1]);
+          prev.classList.remove('active');
+          prev.classList.add('done');
+          prev.querySelector('.hw-icon').textContent = '✓';
+          prev.querySelector('.hw-icon').style.color = 'var(--success)';
+          prev.querySelector('.hw-check').textContent = '';
+        }
+        el.classList.add('active');
+        el.querySelector('.hw-icon').textContent = '◌';
+      }, delays[i]);
+    });
+    // finish last step
+    setTimeout(() => {
+      const last = document.getElementById('hws6');
+      last.classList.remove('active');
+      last.classList.add('done');
+      last.querySelector('.hw-icon').textContent = '✓';
+      last.querySelector('.hw-icon').style.color = 'var(--success)';
+      document.getElementById('hwResult').classList.add('show');
+    }, 3800);
+    // restart loop
+    setTimeout(() => {
+      document.querySelectorAll('.hw-step').forEach(el => {
+        el.classList.remove('active','done');
+        el.querySelector('.hw-icon').textContent = '○';
+        el.querySelector('.hw-icon').style.color = '';
+      });
+      document.getElementById('hwResult').classList.remove('show');
+      runHeroWidget();
+    }, 6500);  }
+  setTimeout(runHeroWidget, 800);
+
   window.addEventListener('scroll', () => {
     document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 10);
   });
+
+  function toggleMenu() {
+    const burger = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileMenu');
+    burger.classList.toggle('open');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); obs.unobserve(e.target); }
