@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>ApoShift – Dienstplanung für Apotheken</title>
+<title>ApoShift – Dienstplanung für Apotheken | Weniger Aufwand, faire Pläne</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -11,7 +11,7 @@
     --surface: #f7f8fa;
     --card: #ffffff;
     --ink: #0d1117;
-    --ink-soft: #6e7787;
+    --ink-soft: #4a5568;
     --accent: #2563eb;
     --accent2: #7c3aed;
     --accent-grad: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
@@ -32,7 +32,7 @@
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 17px; line-height: 1.75; -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; }
 
   /* ── NAV ── */
   nav {
@@ -50,6 +50,8 @@
   .nav-links { display: flex; align-items: center; gap: 28px; }
   .nav-links a { font-size: .875rem; font-weight: 500; color: var(--ink-soft); text-decoration: none; transition: color .2s; }
   .nav-links a:hover { color: var(--ink); }
+  .btn-login { color: var(--ink) !important; padding: 8px 16px; border-radius: 9px; font-size: .85rem; font-weight: 500; text-decoration: none; border: 1px solid var(--border); background: var(--card); transition: border-color .2s, background .2s; }
+  .btn-login:hover { border-color: var(--accent); background: #eff6ff; }
   .btn-nav { background: var(--accent-grad); color: white !important; padding: 8px 18px; border-radius: 9px; font-size: .85rem; font-weight: 600; text-decoration: none; transition: opacity .2s, transform .15s; box-shadow: 0 2px 8px rgba(37,99,235,0.3); }
   .btn-nav:hover { opacity: .9; transform: translateY(-1px); color: white !important; }
 
@@ -88,13 +90,19 @@
     box-shadow: 0 4px 16px rgba(37,99,235,0.35);
     width: auto;
   }
+  .mobile-menu .btn-mobile-login {
+    margin-top: 12px; background: transparent; color: var(--ink-soft) !important;
+    border: 1.5px solid var(--border); padding: 13px 40px; border-radius: 12px;
+    font-size: .95rem; font-weight: 600; font-family: var(--sans);
+    text-decoration: none; width: auto; transition: border-color .2s, color .2s;
+  }
+  .mobile-menu .btn-mobile-login:hover { border-color: var(--accent); color: var(--accent) !important; }
 
   /* ── HERO ── */
   .hero {
     min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-align: center;
-    padding: 100px 24px 80px; position: relative; overflow: visible;
-  }
+    padding: 100px 24px 120px; position: relative; overflow: visible;  }
   .hero-center { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 860px; }
   .hero-wide { display: none; }
 
@@ -102,8 +110,8 @@
     .hero { text-align: left; padding: 80px 60px; }
     .hero-center { display: none; }
     .hero-wide {
-      display: grid; grid-template-columns: 1fr 560px;
-      gap: 64px; align-items: center; width: 100%; max-width: 1320px;
+      display: grid; grid-template-columns: 1fr 440px;
+      gap: 0; align-items: center; width: 100%; max-width: 1280px;
     }
     .hero-wide-text { display: flex; flex-direction: column; }
     .hero-wide-text .hero-sub { margin-left: 0; }
@@ -113,6 +121,7 @@
   .hero-plan-wrap {
     perspective: 1200px;
     animation: floatPlan 5s ease-in-out infinite;
+    margin-left: -40px;
   }
   @keyframes floatPlan {
     0%, 100% { transform: translateY(0); }
@@ -156,9 +165,9 @@
   .hpg-off     { background: var(--surface); color: var(--ink-soft); font-weight: 400; }
 
   .hero h1 {
-    font-family: var(--serif); font-size: clamp(2.5rem, 5.5vw, 4.2rem);
-    font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; color: var(--ink);
-    max-width: 660px; animation: fadeUp .6s .04s ease both;
+    font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: var(--ink);
+    max-width: 560px; animation: fadeUp .6s .04s ease both;
   }
   .hero h1 em { font-style: normal; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero-sub {
@@ -184,9 +193,9 @@
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 75%);
   }
   .hero h1 {
-    font-family: var(--serif); font-size: clamp(2.5rem, 5.5vw, 4.2rem);
-    font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; color: var(--ink);
-    max-width: 660px; animation: fadeUp .6s .04s ease both;
+    font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: var(--ink);
+    max-width: 560px; animation: fadeUp .6s .04s ease both;
   }
   .hero h1 em { font-style: normal; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero-cta { display: flex; gap: 10px; margin-top: 32px; flex-wrap: wrap; justify-content: center; animation: fadeUp .6s .2s ease both; }
@@ -211,7 +220,7 @@
 
   /* ── SCROLL INDICATOR ── */
   .hero-scroll-hint {
-    position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 6px;
     font-family: var(--mono); font-size: .65rem; color: var(--ink-soft);
     letter-spacing: .06em; text-transform: uppercase;
@@ -288,9 +297,10 @@
   section { padding: 88px 24px; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
   .section-tag { display: inline-block; font-family: var(--mono); font-size: .68rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; background: var(--accent-light); padding: 3px 10px; border-radius: 20px; border: 1px solid #bfdbfe; }
-  .section-title { font-family: var(--serif); font-size: clamp(1.7rem, 3.2vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; color: var(--ink); max-width: 640px; }
+  .hero-badge { display: inline-block; font-family: var(--mono); font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); background: var(--accent-light); padding: 5px 14px; border-radius: 20px; border: 1px solid #bfdbfe; margin-bottom: 20px; animation: fadeUp .5s ease both; }
+  .section-title { font-family: var(--serif); font-size: clamp(1.7rem, 3.2vw, 2.6rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--ink); max-width: 640px; }
   .section-title em { font-style: normal; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .section-sub { color: var(--ink-soft); font-size: 1rem; max-width: 520px; margin-top: 12px; line-height: 1.7; }
+  .section-sub { color: var(--ink-soft); font-size: 1.05rem; max-width: 520px; margin-top: 14px; line-height: 1.8; font-weight: 400; }
 
   /* ── PAIN SECTION ── */
   .pain-section { background: var(--ink); }
@@ -301,8 +311,8 @@
   .pain-item { background: var(--ink); padding: 28px 30px; display: flex; gap: 16px; align-items: flex-start; transition: background .2s; }
   .pain-item:hover { background: rgba(255,255,255,.03); }
   .pain-num { font-family: var(--mono); font-size: .68rem; font-weight: 500; color: rgba(255,255,255,.2); margin-top: 3px; flex-shrink: 0; letter-spacing: .04em; }
-  .pain-item h3 { font-family: var(--serif); font-size: .95rem; font-weight: 700; color: white; margin-bottom: 6px; }
-  .pain-item p { font-size: .85rem; color: rgba(255,255,255,.4); line-height: 1.65; }
+  .pain-item h3 { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: white; margin-bottom: 6px; }
+  .pain-item p { font-size: .9rem; color: rgba(255,255,255,.5); line-height: 1.75; }
 
   /* ── BENEFITS ── */
   .benefits-section { background: var(--surface); }
@@ -311,13 +321,17 @@
   .benefit-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: #bfdbfe; }
   .benefit-card.highlight { background: var(--accent-grad); border: none; box-shadow: 0 4px 20px rgba(37,99,235,0.28); grid-column: span 2; }
   .benefit-card.highlight:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.38); }
+  .benefit-card.benefit-top { border-color: #bfdbfe; background: #eff6ff; }
+  .benefit-card.benefit-top h3 { color: var(--accent); }
+  .about-avatar-photo { position: relative; }
+  .about-photo-hint { position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); font-family: var(--mono); font-size: .6rem; color: var(--ink-soft); background: var(--surface); border: 1px solid var(--border); padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
   .benefit-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-light); border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; flex-shrink: 0; }
   .benefit-icon svg { width: 18px; height: 18px; stroke: var(--accent); }
   .benefit-card.highlight .benefit-icon { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.25); }
   .benefit-card.highlight .benefit-icon svg { stroke: white; }
-  .benefit-card h3 { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-  .benefit-card.highlight h3 { color: white; font-size: 1.15rem; }
-  .benefit-card p { font-size: .875rem; color: var(--ink-soft); line-height: 1.65; }
+  .benefit-card h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .benefit-card.highlight h3 { color: white; font-size: 1.2rem; }
+  .benefit-card p { font-size: .925rem; color: var(--ink-soft); line-height: 1.75; }
   .benefit-card.highlight p { color: rgba(255,255,255,.72); }
   .benefit-quote {
     margin-top: 16px; padding: 14px 16px;
@@ -335,8 +349,8 @@
   .how-step.active .how-step-num { background: var(--accent-grad); border-color: transparent; color: white; }
   .how-step.active .how-step-body h3 { color: var(--accent); }
   .how-step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--surface); border: 1.5px solid var(--border); font-family: var(--mono); font-size: .8rem; font-weight: 500; color: var(--ink-soft); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .25s; }
-  .how-step-body h3 { font-family: var(--serif); font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: 5px; transition: color .2s; }
-  .how-step-body p { font-size: .85rem; color: var(--ink-soft); line-height: 1.6; }
+  .how-step-body h3 { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 5px; transition: color .2s; }
+  .how-step-body p { font-size: .9rem; color: var(--ink-soft); line-height: 1.75; }
   .how-visual-wrap { position: sticky; top: 80px; }
   .how-panel { display: none; }
   .how-panel.active { display: block; animation: panelIn .3s ease; }
@@ -394,16 +408,16 @@
 
   /* ── TESTIMONIALS ── */
   .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 48px; }
-  .testimonial { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s ease; }
+  .testimonial { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow); transition: transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s ease; text-align: left; }
   .testimonial:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
   .t-stars { font-size: .85rem; letter-spacing: 2px; margin-bottom: 14px; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; }
   .t-quote { font-size: .9rem; color: var(--ink); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
   .t-quote::before { content: '\201E'; } .t-quote::after { content: '\201C'; }
   .t-result { display: flex; align-items: center; gap: 7px; background: var(--success-light); border: 1px solid #bbf7d0; border-radius: 8px; padding: 8px 12px; margin-bottom: 18px; font-size: .78rem; font-weight: 600; color: var(--success); }
-  .t-author { display: flex; align-items: center; gap: 10px; }
+  .t-author { display: flex; align-items: flex-start; gap: 10px; }
   .t-avatar { width: 34px; height: 34px; border-radius: 50%; font-family: var(--mono); font-size: .68rem; font-weight: 500; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
-  .t-info h4 { font-family: var(--serif); font-size: .85rem; font-weight: 700; }
-  .t-info span { font-size: .75rem; color: var(--ink-soft); }
+  .t-info h4 { font-family: var(--serif); font-size: .85rem; font-weight: 700; line-height: 1.2; margin-bottom: 1px; }
+  .t-info span { font-size: .72rem; color: var(--ink-soft); line-height: 1.3; display: block; }
 
   /* ── COMPARE TABLE ── */
   .compare-section { background: var(--surface); }
@@ -424,19 +438,19 @@
   /* ── KI-EINSPRINGER SPOTLIGHT ── */
   .spotlight-grid { display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
   .spotlight-chips { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
-  .spotlight-chip { display: flex; align-items: center; gap: 10px; font-size: .82rem; color: rgba(255,255,255,.65); }
-  .spotlight-chip svg { flex-shrink: 0; stroke: rgba(255,255,255,.5); }
-  .spotlight-mockup { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+  .spotlight-chip { display: flex; align-items: center; gap: 10px; font-size: .9rem; color: var(--ink-soft); font-weight: 500; }
+  .spotlight-chip svg { flex-shrink: 0; stroke: var(--accent); }
+  .spotlight-mockup { background: #0d1117; border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 24px 60px rgba(0,0,0,.2), 0 4px 16px rgba(0,0,0,.1); }
   .spm-header { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.08); }
   .spm-body { padding: 16px; }
-  .spm-alert { display: flex; align-items: center; gap: 8px; background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.2); border-radius: 8px; padding: 10px 12px; font-size: .78rem; color: rgba(255,255,255,.7); }
-  .spm-candidate { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 10px; margin-bottom: 6px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); transition: background .2s; }
-  .spm-candidate.best { background: rgba(37,99,235,.15); border-color: rgba(37,99,235,.3); }
+  .spm-alert { display: flex; align-items: center; gap: 8px; background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.25); border-radius: 8px; padding: 10px 12px; font-size: .78rem; color: rgba(255,255,255,.8); }
+  .spm-candidate { display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 10px; margin-bottom: 6px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); transition: background .2s; }
+  .spm-candidate.best { background: rgba(37,99,235,.2); border-color: rgba(37,99,235,.4); }
   .spm-cand-avatar { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: .55rem; font-weight: 700; color: white; flex-shrink: 0; }
   .spm-cand-info { flex: 1; }
-  .spm-cand-name { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.85); display: flex; align-items: center; gap: 6px; }
-  .spm-cand-detail { font-size: .68rem; color: rgba(255,255,255,.4); margin-top: 2px; font-family: var(--mono); }
-  .spm-cand-action { font-family: var(--mono); font-size: .65rem; color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .spm-cand-name { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.9); display: flex; align-items: center; gap: 6px; }
+  .spm-cand-detail { font-size: .68rem; color: rgba(255,255,255,.5); margin-top: 2px; font-family: var(--mono); }
+  .spm-cand-action { font-family: var(--mono); font-size: .65rem; color: #93c5fd; font-weight: 600; white-space: nowrap; }
   .spm-badge { font-family: var(--mono); font-size: .58rem; font-weight: 500; padding: 2px 6px; border-radius: 4px; }
   .spm-badge.green { background: rgba(5,150,105,.2); color: #34d399; }
   .spm-badge.blue { background: rgba(37,99,235,.2); color: #93c5fd; }
@@ -463,6 +477,7 @@
   /* ── ÜBER UNS ── */
   .about-grid { display: grid; grid-template-columns: 1fr 340px; gap: 64px; align-items: start; }
   .about-body { font-size: .95rem; color: var(--ink-soft); line-height: 1.8; margin-bottom: 16px; }
+  .about-body:first-of-type { margin-top: 20px; }
   .about-values { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
   .about-value { display: flex; align-items: flex-start; gap: 14px; }
   .about-value-icon { width: 36px; height: 36px; border-radius: 9px; background: var(--accent-light); border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -484,7 +499,12 @@
   @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .about-card { position: static; } }
 
   /* ── PRICING ── */
-  .billing-toggle-wrap { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 28px; }
+  .billing-toggle-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 32px; margin-bottom: 0; }
+  .billing-toggle-row { display: flex; align-items: center; gap: 12px; }
+  /* Visually center toggle above middle (Pro) card in 3-col grid */
+  @media (min-width: 760px) {
+    .billing-toggle-wrap { margin-left: calc(33.333% + 10px); margin-right: calc(33.333% + 10px); }
+  }
   .billing-label { font-size: .875rem; color: var(--ink-soft); font-weight: 500; transition: color .2s; }
   .billing-label.active { color: var(--ink); font-weight: 600; }
   .toggle-track { width: 44px; height: 24px; background: var(--border); border-radius: 12px; position: relative; cursor: pointer; transition: background .25s; flex-shrink: 0; }
@@ -493,7 +513,7 @@
   .toggle-track.yearly .toggle-thumb { transform: translateX(20px); }
   .billing-save-badge { font-family: var(--mono); font-size: .65rem; font-weight: 600; background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; padding: 3px 8px; border-radius: 20px; opacity: 0; transform: translateY(4px); transition: opacity .25s, transform .25s; }
   .billing-save-badge.visible { opacity: 1; transform: translateY(0); }
-  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; align-items: start; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; align-items: start; }
   .pricing-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; box-shadow: var(--shadow); transition: transform .5s cubic-bezier(.25,.46,.45,.94), box-shadow .5s ease; text-align: left; will-change: transform; }
   .pricing-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
   .pricing-card.popular { background: var(--accent-grad); border: none; box-shadow: 0 6px 24px rgba(37,99,235,0.35); position: relative; }
@@ -511,7 +531,7 @@
   .pricing-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
   .pricing-card.popular .pricing-divider { background: rgba(255,255,255,.2); }
   .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 24px; }
-  .pricing-features li { display: flex; align-items: flex-start; gap: 9px; font-size: .85rem; color: var(--ink-soft); }
+  .pricing-features li { display: flex; align-items: flex-start; gap: 9px; font-size: .9rem; color: var(--ink-soft); line-height: 1.6; }
   .pricing-card.popular .pricing-features li { color: rgba(255,255,255,.95); }
   .pricing-features li::before { content: '✓'; font-weight: 700; font-size: .8rem; color: var(--success); flex-shrink: 0; margin-top: 2px; }
   .pricing-card.popular .pricing-features li::before { color: rgba(255,255,255,.9); }
@@ -524,28 +544,35 @@
   /* ── FAQ ── */
   .faq-list { max-width: 700px; margin: 44px auto 0; }
   .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-question { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 18px 0; text-align: left; font-family: var(--serif); font-size: .95rem; font-weight: 600; color: var(--ink); transition: color .2s; }
+  .faq-question { width: 100%; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; text-align: left; font-family: var(--serif); font-size: 1rem; font-weight: 600; color: var(--ink); transition: color .2s; min-height: 48px; }
   .faq-question:hover { color: var(--accent); }
   .faq-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: .85rem; flex-shrink: 0; transition: transform .3s, background .2s; }
   .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent-light); border-color: #bfdbfe; color: var(--accent); }
   .faq-answer { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
   .faq-item.open .faq-answer { max-height: 240px; }
-  .faq-answer p { padding: 0 0 18px; font-size: .875rem; color: var(--ink-soft); line-height: 1.75; text-align: left; }
+  .faq-answer p { padding: 0 0 18px; font-size: .925rem; color: var(--ink-soft); line-height: 1.8; text-align: left; }
 
   /* ── CTA ── */
   .cta-section { background: var(--ink); text-align: center; padding: 96px 24px; position: relative; overflow: hidden; }
   .cta-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 50% 70% at 20% 50%, rgba(37,99,235,.12) 0%, transparent 60%), radial-gradient(ellipse 40% 60% at 80% 30%, rgba(124,58,237,.12) 0%, transparent 60%); }
   .cta-section .section-tag { background: rgba(37,99,235,.15); border-color: rgba(37,99,235,.25); color: #93c5fd; }
-  .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.9rem); font-weight: 800; letter-spacing: -0.03em; color: white; max-width: 600px; margin: 0 auto 14px; }
+  .cta-section h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 2.9rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: white; max-width: 600px; margin: 0 auto 14px; }
   .cta-section h2 em { font-style: normal; background: var(--accent-grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .cta-section p { color: rgba(255,255,255,.55); max-width: 440px; margin: 0 auto 32px; font-size: 1rem; line-height: 1.7; }
-  .cta-form { display: flex; gap: 10px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+  .cta-form { display: flex; flex-direction: column; gap: 16px; max-width: 440px; margin: 0 auto; }
   .cta-input { flex: 1; min-width: 200px; padding: 13px 16px; border-radius: 9px; border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.08); color: white; font-size: .9rem; outline: none; font-family: var(--sans); transition: border-color .2s; }
   .cta-input::placeholder { color: rgba(255,255,255,.35); }
   .cta-input:focus { border-color: rgba(255,255,255,.3); }
   .btn-cta { background: var(--accent-grad); color: white; font-weight: 600; padding: 13px 24px; border-radius: 9px; border: none; cursor: pointer; font-size: .9rem; transition: opacity .2s, transform .15s; white-space: nowrap; font-family: var(--sans); box-shadow: 0 4px 14px rgba(37,99,235,0.4); }
   .btn-cta:hover { opacity: .9; transform: translateY(-1px); }
-  .cta-trust { margin-top: 14px; font-family: var(--mono); font-size: .68rem; color: rgba(255,255,255,.3); letter-spacing: .04em; }
+  .cta-trust { margin-top: 14px; font-family: var(--mono); font-size: .68rem; color: rgba(255,255,255,.3); letter-spacing: .04em; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  .cta-steps { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
+  .cta-step { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 14px 18px; }
+  .cta-step-num { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-grad); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: .75rem; font-weight: 700; color: white; flex-shrink: 0; }
+  .cta-step-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+  .cta-step-text strong { font-size: .875rem; color: white; font-weight: 600; }
+  .cta-step-text span { font-size: .78rem; color: rgba(255,255,255,.45); }
+  .cta-step-sep { font-size: 1.1rem; color: rgba(255,255,255,.2); font-weight: 300; }
 
   /* ── FOOTER ── */
   footer { background: #07090d; padding: 40px 24px 28px; border-top: 1px solid rgba(255,255,255,.07); }
@@ -578,31 +605,29 @@
     .spotlight-grid { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; }
     .about-card { position: static; }
+    /* Toggle: keine Offset-Zentrierung auf Tablet – einfach mittig */
+    .billing-toggle-wrap { margin-left: 0 !important; margin-right: 0 !important; }
   }
 
   /* ── SMARTPHONE (≤ 640px) ── */
   @media (max-width: 640px) {
     /* Nav */
     nav { padding: 0 16px; height: 54px; }
+    .btn-login { display: none; } /* Login nur im Mobile-Menü */
 
     /* Hero */
-    .hero { padding: 80px 20px 100px; min-height: 100svh; }
-    .hero h1 { font-size: 1.85rem; line-height: 1.2; letter-spacing: -.03em; }
-    .hero-sub { font-size: .875rem; line-height: 1.7; margin-top: 14px; }
+    .hero { padding: 72px 20px 110px; min-height: 100svh; }
+    .hero h1 { font-size: 2rem; line-height: 1.1; letter-spacing: -.03em; }
+    .hero-sub { font-size: .9rem; line-height: 1.7; margin-top: 14px; }
     .hero-cta { flex-direction: column; align-items: stretch; gap: 10px; margin-top: 24px; }
     .btn-primary, .btn-secondary { width: 100%; text-align: center; justify-content: center; }
     .hero-pills { gap: 7px; justify-content: center; }
     .pill { font-size: .76rem; padding: 6px 11px; }
-    .scroll-indicator { display: none; }
-
-    /* Proof bar */
-    .proof-inner { flex-direction: column; gap: 8px; align-items: flex-start; padding: 14px 20px; }
-    .proof-item { font-size: .75rem; }
-    .proof-sep { display: none; }
+    .hero-scroll-hint { bottom: 24px; }
 
     /* Sections */
-    .section-inner { padding: 56px 20px; }
-    .section-title { font-size: 1.5rem; line-height: 1.25; }
+    .section-inner { padding: 52px 20px; }
+    .section-title { font-size: 1.5rem; line-height: 1.2; }
     .section-sub { font-size: .875rem; }
 
     /* Pain */
@@ -619,14 +644,15 @@
     .benefit-icon { width: 36px; height: 36px; margin-bottom: 12px; }
 
     /* Spotlight (KI-Einspringer) */
-    #einspringer .section-inner { padding: 56px 20px; }
-    .spotlight-grid { grid-template-columns: 1fr; gap: 32px; }
+    #einspringer .section-inner { padding: 52px 20px; }
+    .spotlight-grid { grid-template-columns: 1fr; gap: 28px; }
     #einspringer h2.section-title { font-size: 1.5rem; }
-    .spotlight-mockup { font-size: .85rem; }
-    .spotlight-chips { gap: 8px; margin-top: 20px; }
+    .spotlight-mockup { font-size: .82rem; max-width: 100%; }
+    .spotlight-chips { gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+    .spotlight-chip { font-size: .72rem; padding: 5px 10px; }
 
     /* How it works */
-    .how-grid { grid-template-columns: 1fr; gap: 40px; }
+    .how-grid { grid-template-columns: 1fr; gap: 32px; }
     .hw-steps { gap: 0; }
     .hw-step { padding: 16px 0 16px 48px; }
     .hw-step-num { font-size: .65rem; }
@@ -637,20 +663,23 @@
     /* Compare table */
     .compare-table { font-size: .76rem; }
     .compare-table th, .compare-table td { padding: 9px 10px; }
-    .compare-table th:first-child, .compare-table td:first-child { min-width: 130px; }
+    .compare-table th:first-child, .compare-table td:first-child { min-width: 120px; }
 
     /* Testimonials */
     .testimonials-grid { grid-template-columns: 1fr; gap: 12px; }
     .t-card { padding: 20px; }
 
     /* Über uns */
-    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
     .about-card { position: static; padding: 20px; }
     .about-value { gap: 12px; }
     .about-value-icon { width: 32px; height: 32px; flex-shrink: 0; }
 
+    /* Pricing Toggle */
+    .billing-toggle-wrap { margin-left: 0 !important; margin-right: 0 !important; margin-top: 24px; }
+
     /* Pricing */
-    .pricing-grid { grid-template-columns: 1fr; gap: 12px; }
+    .pricing-grid { grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
     .pricing-card { padding: 24px 20px; }
     .price-num { font-size: 2.2rem; }
     .pricing-card ul { margin: 16px 0; gap: 8px; }
@@ -658,37 +687,45 @@
     .btn-pricing { padding: 12px 20px; font-size: .88rem; }
 
     /* Feature table */
-    .feat-table-wrap { margin-top: 28px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .feat-table { min-width: 560px; font-size: .78rem; }
-    .feat-table thead th { padding: 14px 10px 10px; font-size: .82rem; }
-    .feat-price { font-size: 1.1rem; }
-    .feat-table tbody td { padding: 9px 10px; font-size: .78rem; }
+    .feat-table-wrap { margin-top: 24px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .feat-table { min-width: 520px; font-size: .78rem; }
+    .feat-table thead th { padding: 14px 10px 10px; font-size: .78rem; }
+    .feat-price { font-size: 1rem; }
+    .feat-table tbody td { padding: 9px 10px; font-size: .76rem; }
     .feat-group-row td { padding: 7px 10px; font-size: .62rem; }
     .feat-cta-cell { padding: 12px 10px !important; }
     .feat-cta-cell .btn-primary, .feat-cta-cell .btn-secondary { font-size: .75rem !important; padding: 8px 10px !important; }
 
     /* FAQ */
-    .faq-question { font-size: .875rem; padding: 16px 0; }
+    .faq-question { font-size: .875rem; padding: 16px 0; min-height: 48px; }
     .faq-answer p { font-size: .84rem; }
 
     /* CTA section */
-    .cta-form { flex-direction: column; gap: 10px; }
-    .cta-input { width: 100%; }
-    .btn-cta { width: 100%; text-align: center; }
-    .cta-trust { font-size: .65rem; }
+    .cta-steps { flex-direction: column; gap: 10px; align-items: center; }
+    .cta-step { width: 100%; max-width: 320px; }
+    .cta-step-sep { transform: rotate(90deg); }
+    .cta-form { flex-direction: column; gap: 14px; }
+    .cta-input { width: 100%; font-size: .95rem; }
+    .btn-cta { width: 100%; text-align: center; font-size: .95rem; padding: 14px 20px; }
+    .cta-trust { font-size: .65rem; letter-spacing: .02em; }
 
     /* Footer */
     .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
     .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+    /* Chatbot */
+    #chatWindow { width: calc(100vw - 24px); right: 12px; bottom: 84px; max-height: 70vh; }
+    #chatBtn { right: 16px; bottom: 16px; width: 50px; height: 50px; }
   }
 
   /* ── SEHR KLEINE SCREENS (≤ 380px) ── */
   @media (max-width: 380px) {
-    .hero h1 { font-size: 1.6rem; }
+    .hero h1 { font-size: 1.75rem; }
     .hero-sub { font-size: .84rem; }
-    .section-title { font-size: 1.35rem; }
+    .section-title { font-size: 1.3rem; }
+    .section-inner { padding: 44px 16px; }
     .pill { font-size: .72rem; padding: 5px 9px; }
-    .proof-item { font-size: .72rem; }
+    nav { padding: 0 12px; }
   }
 </style>
 </head>
@@ -705,6 +742,7 @@
     <a href="#vergleich">Vorher/Nachher</a>
     <a href="#ueber-uns">Über uns</a>
     <a href="#pricing">Preise</a>
+    <a href="https://app.aposhift.de/login" class="btn-login">Anmelden</a>
     <a href="#demo" class="btn-nav">Kostenlos testen →</a>
   </div>
   <button class="burger" id="burgerBtn" onclick="toggleMenu()" aria-label="Menü öffnen">
@@ -724,6 +762,7 @@
   <a href="#pricing" onclick="toggleMenu()">Preise</a>
   <a href="#faq" onclick="toggleMenu()">FAQ</a>
   <a href="#demo" class="btn-mobile-cta" onclick="toggleMenu()">1 Monat kostenlos testen →</a>
+  <a href="https://app.aposhift.de/login" class="btn-mobile-login" onclick="toggleMenu()">Bereits Kunde? Anmelden</a>
 </div>
 
 <!-- HERO -->
@@ -733,44 +772,38 @@
 
   <!-- Default centered layout (< 1440px) -->
   <div class="hero-center">
-    <h1>Dienstpläne für Apotheken –<br><em>in einem Bruchteil der Zeit.</em></h1>
-    <p class="hero-sub">Apotheken sparen im Schnitt 3,5 Stunden pro Woche – für einen Plan der fair ist, Wünsche berücksichtigt und das Team nicht mehr diskutieren lässt. Ab 49 € / Monat.</p>
+    <span class="hero-badge">Dienstplanung für Apotheken</span>
+    <h1>Der Sonntagabend<br><em>gehört wieder Ihnen.</em></h1>
+    <p class="hero-sub">KI-unterstützte Dienstplanung für Ihre Apotheke –<br>in Sekunden! Ab 49 € / Monat.</p>
     <div class="hero-cta">
       <a href="#demo" class="btn-primary">1 Monat kostenlos testen →</a>
-      <a href="#benefits" class="btn-secondary">Wie es Ihren Alltag verändert</a>
-    </div>
-    <div style="margin-top:14px;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em;">
-      <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="5" width="8" height="6" rx="1.5"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg> KEINE KREDITKARTE · KEIN RISIKO · JEDERZEIT KÜNDBAR
+      <a href="#how" class="btn-secondary">So funktioniert es</a>
     </div>
     <div class="hero-pills">
-      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M7.5 4.5v3l2 1.5"/></svg> Stundenlange Planerei entfällt</div>
-      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7.5 2v11M3 13h9"/><path d="M2 6l2.5-3 2.5 3M8 6l2.5-3 2.5 3"/><path d="M1.5 9a2.5 2.5 0 005 0M8.5 9a2.5 2.5 0 005 0"/></svg> Faire Schichtverteilung</div>
-      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2h11v8H8l-3 3v-3H2z"/></svg> Weniger Diskussionen</div>
-      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M11.5 3.5A5.5 5.5 0 103 10"/><path d="M1 8l2 2 2-2"/></svg> Ausfälle schnell auffangen</div>
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M7.5 4.5v3l2 1.5"/></svg> Ø 3,5 Std. gespart pro Woche</div>
       <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M5 7.5l2 2 3-3"/></svg> Wünsche werden berücksichtigt</div>
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7.5" y1="1.5" x2="7.5" y2="4"/><line x1="2" y1="4" x2="13" y2="4"/><line x1="3.5" y1="4" x2="3.5" y2="7"/><line x1="11.5" y1="4" x2="11.5" y2="7"/><rect x="1.5" y="7" width="4" height="2" rx="1"/><rect x="9.5" y="7" width="4" height="2" rx="1"/><line x1="4" y1="13" x2="11" y2="13"/><line x1="7.5" y1="9" x2="7.5" y2="13"/></svg> Faire Schichtverteilung</div>
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4.5 7V5a3 3 0 016 0v2"/><rect x="2.5" y="7" width="10" height="7" rx="1.5"/></svg> ArbZG-konform geprüft</div>
+      <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2h11v8H8l-3 3v-3H2z"/></svg> Weniger Diskussionen</div>
     </div>
   </div>
-
   <!-- Wide layout (≥ 1440px): text left, plan right -->
   <div class="hero-wide">
     <!-- Left: Text -->
     <div class="hero-wide-text">
-      <h1>Dienstpläne für Apotheken –<br><em>in einem Bruchteil der Zeit.</em></h1>
-      <p class="hero-sub" style="margin-left:0;">Apotheken sparen im Schnitt 3,5 Stunden pro Woche – für einen Plan der fair ist, Wünsche berücksichtigt und das Team nicht mehr diskutieren lässt. Ab 49 € / Monat.</p>
+      <span class="hero-badge" style="align-self:flex-start;">Dienstplanung für Apotheken</span>
+      <h1>Der Sonntagabend<br><em>gehört wieder Ihnen.</em></h1>
+      <p class="hero-sub" style="margin-left:0;">KI-unterstützte Dienstplanung für Ihre Apotheke –<br>in Sekunden! Ab 49 € / Monat.</p>
       <div class="hero-cta" style="justify-content:flex-start;">
         <a href="#demo" class="btn-primary">1 Monat kostenlos testen →</a>
-        <a href="#benefits" class="btn-secondary">Wie es Ihren Alltag verändert</a>
-      </div>
-      <div style="margin-top:14px;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:6px;">
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="5" width="8" height="6" rx="1.5"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
-        KEINE KREDITKARTE · KEIN RISIKO · JEDERZEIT KÜNDBAR
+        <a href="#how" class="btn-secondary">So funktioniert es</a>
       </div>
       <div class="hero-pills" style="justify-content:flex-start;">
-        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M7.5 4.5v3l2 1.5"/></svg> Stundenlange Planerei entfällt</div>
-        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7.5 2v11M3 13h9"/><path d="M2 6l2.5-3 2.5 3M8 6l2.5-3 2.5 3"/><path d="M1.5 9a2.5 2.5 0 005 0M8.5 9a2.5 2.5 0 005 0"/></svg> Faire Schichtverteilung</div>
-        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2h11v8H8l-3 3v-3H2z"/></svg> Weniger Diskussionen</div>
-        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M11.5 3.5A5.5 5.5 0 103 10"/><path d="M1 8l2 2 2-2"/></svg> Ausfälle schnell auffangen</div>
+        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M7.5 4.5v3l2 1.5"/></svg> Ø 3,5 Std. gespart pro Woche</div>
         <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M5 7.5l2 2 3-3"/></svg> Wünsche werden berücksichtigt</div>
+        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7.5" y1="1.5" x2="7.5" y2="4"/><line x1="2" y1="4" x2="13" y2="4"/><line x1="3.5" y1="4" x2="3.5" y2="7"/><line x1="11.5" y1="4" x2="11.5" y2="7"/><rect x="1.5" y="7" width="4" height="2" rx="1"/><rect x="9.5" y="7" width="4" height="2" rx="1"/><line x1="4" y1="13" x2="11" y2="13"/><line x1="7.5" y1="9" x2="7.5" y2="13"/></svg> Faire Schichtverteilung</div>
+        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4.5 7V5a3 3 0 016 0v2"/><rect x="2.5" y="7" width="10" height="7" rx="1.5"/></svg> ArbZG-konform geprüft</div>
+        <div class="pill"><svg class="pill-icon" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2h11v8H8l-3 3v-3H2z"/></svg> Weniger Diskussionen</div>
       </div>
     </div>
 
@@ -863,16 +896,6 @@
   <div class="hero-scroll-hint">
     <span>Mehr entdecken</span>
     <div class="hero-scroll-arrow"></div>
-  </div>
-
-  <!-- Proof bar pinned to bottom of hero viewport -->
-  <div class="proof-bar">
-    <div class="proof-inner">
-      <div class="proof-item"><div class="proof-dot"></div> Bereits in über <span class="proof-count" data-target="40" data-decimals="0" data-suffix="">0</span>&nbsp;Apotheken im Einsatz</div>
-      <div class="proof-item"><div class="proof-dot"></div> Ø <span class="proof-count" data-target="3.5" data-decimals="1" data-suffix="">0</span>&nbsp;Std. Zeitersparnis pro Woche</div>
-      <div class="proof-item"><div class="proof-dot"></div> DSGVO-konform · Server in Deutschland</div>
-      <div class="proof-item"><div class="proof-dot"></div> Keine Kreditkarte · Keine Mindestlaufzeit</div>
-    </div>
   </div>
 </section>
 
@@ -1036,7 +1059,7 @@
 <section class="pain-section" style="background:var(--ink)">
   <div class="section-inner">
     <span class="section-tag reveal">Das kennen Sie</span>
-    <h2 class="section-title reveal">Was 3 Stunden Sonntagabend <em>wirklich kosten.</em></h2>
+    <h2 class="section-title reveal">Was 3 Stunden Sonntagabend<br><em>wirklich kosten.</em></h2>
     <p class="section-sub reveal">Nicht nur Zeit. Auch Nerven, Teamfrieden und Planungssicherheit.</p>
     <div class="pain-grid reveal">
       <div class="pain-item">
@@ -1089,7 +1112,7 @@
 <section id="benefits" class="benefits-section" style="background:var(--surface)">
   <div class="section-inner">
     <span class="section-tag reveal">Was sich ändert</span>
-    <h2 class="section-title reveal">Was ApoShift Ihrem Alltag <em>konkret bringt.</em></h2>
+    <h2 class="section-title reveal">Was ApoShift Ihrem Alltag<br><em>konkret bringt.</em></h2>
     <p class="section-sub reveal">Kein Technik-Versprechen. Sondern echte Entlastung – für Sie und Ihr Team.</p>
     <div class="benefits-grid">
 
@@ -1100,8 +1123,8 @@
         <div class="benefit-quote">„Ich hab das früher Sonntag abends gemacht. Jetzt ist der Plan Freitag fertig – ohne Stress."<br><strong style="font-style:normal;opacity:.7">— Dr. Sabine Kowalski, Apothekenleiterin Frankfurt</strong></div>
       </div>
 
-      <div class="benefit-card reveal">
-        <div class="benefit-icon"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7.5" y1="1.5" x2="7.5" y2="13.5"/><line x1="4" y1="13.5" x2="11" y2="13.5"/><line x1="2" y1="4" x2="13" y2="4"/><path d="M2 4l2 4a2 2 0 004 0L6 4"/><path d="M9 4l2 4a2 2 0 004 0L13 4"/></svg></div>
+      <div class="benefit-card benefit-top reveal">
+        <div class="benefit-icon"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7.5" y1="1.5" x2="7.5" y2="4"/><line x1="2" y1="4" x2="13" y2="4"/><line x1="3.5" y1="4" x2="3.5" y2="7"/><line x1="11.5" y1="4" x2="11.5" y2="7"/><rect x="1.5" y="7" width="4" height="2" rx="1"/><rect x="9.5" y="7" width="4" height="2" rx="1"/><line x1="4" y1="13" x2="11" y2="13"/><line x1="7.5" y1="9" x2="7.5" y2="13"/></svg></div>
         <h3>Faire Verteilung, die jeder sieht</h3>
         <p>Wer hatte wann Samstag? Wer mehr Spätschichten? ApoShift zeigt es transparent – und verteilt automatisch gerecht. Kein Bauchgefühl, keine Vorwürfe.</p>
       </div>
@@ -1130,7 +1153,7 @@
         <p>Wer kann kurzfristig einspringen? ApoShift zeigt sofort, wer verfügbar ist und wer noch nicht zu viel hat. Kein Telefonmarathon mehr.</p>
       </div>
 
-      <div class="benefit-card reveal">
+      <div class="benefit-card benefit-top reveal">
         <div class="benefit-icon"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 2h5l3 3v8H4z"/><path d="M9 2v3h3"/><path d="M6 8h4M6 10.5h3"/></svg></div>
         <h3>Rechtssicherheit ohne Nachdenken</h3>
         <p>Ruhezeiten, Approbationspflicht, Arbeitszeitgesetz – alles wird automatisch geprüft. Kein Plan verlässt ApoShift mit vermeidbaren Fehlern.</p>
@@ -1147,14 +1170,14 @@
 </section>
 
 <!-- KI-EINSPRINGER SPOTLIGHT -->
-<section id="einspringer" style="background: var(--ink); overflow:hidden; position:relative;">
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 70% 50%, rgba(124,58,237,0.15) 0%, transparent 60%), radial-gradient(ellipse 50% 60% at 30% 50%, rgba(37,99,235,0.12) 0%, transparent 60%); pointer-events:none;"></div>
+<section id="einspringer" style="background: var(--card); overflow:hidden; position:relative; border-top:1px solid var(--border);">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 80% 50%, rgba(37,99,235,0.06) 0%, transparent 60%); pointer-events:none;"></div>
   <div class="section-inner" style="position:relative;z-index:1;">
     <div class="spotlight-grid">
       <div>
-        <span class="section-tag" style="background:rgba(37,99,235,.2);border-color:rgba(37,99,235,.3);color:#93c5fd;">KI-Feature</span>
-        <h2 class="section-title" style="color:white;margin-top:16px;">Ausfall um 7 Uhr morgens?<br><em style="background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">ApoShift findet den Einspringer.</em></h2>
-        <p style="color:rgba(255,255,255,.6);font-size:.95rem;line-height:1.8;margin-top:16px;max-width:480px;">Eine Mitarbeiterin meldet sich krank. Früher: Telefonliste raus, einzeln durchklingeln, hoffen. Heute: ApoShift analysiert sofort wer verfügbar ist, die nötigen Ruhezeiten einhält und qualifikationstechnisch passt – <strong style="color:white;">ArbZG-konform, in Sekunden.</strong></p>
+        <span class="section-tag">KI-Feature</span>
+        <h2 class="section-title" style="margin-top:16px;">Ausfall um 7 Uhr morgens?<br><em>ApoShift findet den Einspringer.</em></h2>
+        <p style="font-size:1rem;line-height:1.8;margin-top:16px;max-width:480px;color:var(--ink-soft);">Eine Mitarbeiterin meldet sich krank. Früher: Telefonliste raus, einzeln durchklingeln, hoffen. Heute analysiert ApoShift sofort, wer verfügbar ist, die nötigen Ruhezeiten einhält und qualifikationstechnisch passt – <strong style="color:var(--ink);">ArbZG-konform, in Sekunden.</strong></p>
         <div class="spotlight-chips">
           <div class="spotlight-chip"><svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4.5 7V5a3 3 0 016 0v2"/><rect x="2.5" y="7" width="10" height="7" rx="1.5"/></svg> ArbZG-konform geprüft</div>
           <div class="spotlight-chip"><svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><path d="M7.5 4.5v3l2 1.5"/></svg> Ruhezeiten automatisch berechnet</div>
@@ -1162,7 +1185,7 @@
           <div class="spotlight-chip"><svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2h11v8H8l-3 3v-3H2z"/></svg> Benachrichtigung per E-Mail</div>
         </div>
         <div style="margin-top:32px;">
-          <span style="font-family:var(--mono);font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.04em;">VERFÜGBAR IM PRO-PAKET</span>
+          <span style="font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em;">VERFÜGBAR IM PRO-PAKET</span>
         </div>
       </div>
       <div class="spotlight-mockup">
@@ -1207,7 +1230,7 @@
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how" style="background:var(--card)">
+<section id="how" style="background:var(--surface)">
   <div class="section-inner">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
       <div>
@@ -1464,7 +1487,7 @@
 <section id="vergleich" class="compare-section">
   <div class="section-inner" style="text-align:center">
     <span class="section-tag reveal">Vorher / Nachher</span>
-    <h2 class="section-title reveal" style="margin:0 auto">Was sich <em>konkret verändert.</em></h2>
+    <h2 class="section-title reveal" style="margin:0 auto">Was sich<br><em>konkret verändert.</em></h2>
     <p class="section-sub reveal" style="margin:12px auto 0">Kein Versprechen – sondern was Apotheken nach 4 Wochen berichten.</p>
     <table class="compare-table reveal">
       <thead>
@@ -1514,7 +1537,7 @@
 <section style="background:var(--surface)">
   <div class="section-inner" style="text-align:center">
     <span class="section-tag reveal">Aus der Praxis</span>
-    <h2 class="section-title reveal" style="margin:0 auto">Was Apotheken sagen, <em>die ApoShift nutzen.</em></h2>
+    <h2 class="section-title reveal" style="margin:0 auto">Was Apotheken sagen,<br><em>die ApoShift nutzen.</em></h2>
     <div class="testimonials-grid">
 
       <div class="testimonial reveal">
@@ -1540,7 +1563,7 @@
       <div class="testimonial reveal">
         <div class="t-stars">★★★★★</div>
         <p class="t-quote">Als eine Kollegin kurzfristig ausgefallen ist, hatte ich in zwei Minuten gesehen, wer einspringen kann. Früher war das ein halber Tag Telefonieren.</p>
-        <div class="t-result"><svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M11.5 3.5A5.5 5.5 0 103 10"/><path d="M1 8l2 2 2-2"/></svg> Ausfall in 2 Minuten organisiert</div>
+        <div class="t-result"><svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="5.5" cy="4" r="2"/><path d="M1 13c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4"/><path d="M10.5 8l1.5 1.5 2.5-2.5"/></svg> Ausfall in 2 Minuten organisiert</div>
         <div class="t-author">
           <div class="t-avatar" style="background:linear-gradient(135deg,#7c3aed,#db2777)">LR</div>
           <div class="t-info"><h4>Lena Richter</h4><span>Pharm. Leiterin, Stadtapotheke München</span></div>
@@ -1557,10 +1580,8 @@
     <div class="about-grid">
       <div class="about-text">
         <span class="section-tag reveal">Wer hinter ApoShift steckt</span>
-        <h2 class="section-title reveal">Gebaut von Menschen, die das <em>Problem selbst kennen.</em></h2>
-        <p class="about-body reveal">ApoShift entstand nicht im Konferenzraum – sondern an einem ganz normalen Abend. Meine Partnerin ist Apothekerin und klagte mal wieder über den Sonntag, den sie mit dem Erstellen des Wochenplans verbracht hatte. Nicht weil sie es nicht konnte – sondern weil es schlicht zu viel Zeit kostete. Zeit, die sie lieber mit dem verbracht hätte, wofür sie Apothekerin geworden ist: Menschen zu beraten.</p>
-        <p class="about-body reveal">Wir kommen aus der IT- und Marketing-Branche. KI, KI-Agenten, Automatisierung – das ist unser Alltag. Also haben wir uns gefragt: Warum gibt es das nicht für Apotheken? Warum verbringen Apothekenleiterinnen und -leiter in ganz Deutschland jede Woche Stunden mit einer Aufgabe, die eine Software in Sekunden erledigen könnte?</p>
-        <p class="about-body reveal">ApoShift ist unsere Antwort darauf. Kein aufgeblähtes HR-System, keine komplizierte Software mit wochenlanger Einarbeitung. Sondern ein Werkzeug, das eine Sache richtig gut macht: <strong>den Dienstplan – fair, schnell und ohne Stress.</strong></p>
+        <h2 class="section-title reveal">Gebaut von Menschen,<br><em>die das Problem selbst kennen.</em></h2>
+        <p class="about-body reveal">ApoShift entstand, weil eine Freundin Apothekerin ist – und jeder Sonntagabend dem Dienstplan gehörte. Wir kommen aus IT und KI-Entwicklung und haben ein Werkzeug gebaut, das <strong>eine Sache richtig gut macht: den Dienstplan – fair, schnell und ohne Stress.</strong></p>
         <div class="about-values reveal">
           <div class="about-value"><span class="about-value-icon"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="7.5" r="5.5"/><circle cx="7.5" cy="7.5" r="2.5"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor" stroke="none"/></svg></span><div><strong>Fokus auf das Wesentliche</strong><span>Wir bauen nur, was Apotheken wirklich brauchen – kein Feature-Overkill.</span></div></div>
           <div class="about-value"><span class="about-value-icon"><svg viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="4.5" r="2"/><path d="M1 13c0-2.5 1.8-4 4.5-4s4.5 1.5 4.5 4"/><circle cx="11" cy="5" r="1.5"/><path d="M11 9.5c1.8.2 3 1.3 3 3"/></svg></span><div><strong>Nah an der Praxis</strong><span>Jede Funktion entsteht im Dialog mit echten Apothekenteams.</span></div></div>
@@ -1569,7 +1590,7 @@
       </div>
       <div class="about-aside reveal">
         <div class="about-card">
-          <div class="about-avatar"><svg viewBox="0 0 15 15" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="4.5" r="2.5"/><path d="M2 13c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/></svg></div>
+          <div class="about-avatar about-avatar-photo" id="founderPhoto"><svg viewBox="0 0 15 15" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><circle cx="7.5" cy="4.5" r="2.5"/><path d="M2 13c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/></svg><div class="about-photo-hint">Foto folgt</div></div>
           <div class="about-name">[Euer Name / Team]</div>
           <div class="about-role">Gründer, ApoShift</div>
           <div class="about-divider"></div>
@@ -1589,17 +1610,19 @@
 <section id="pricing" style="background:var(--surface)">
   <div class="section-inner" style="text-align:center">
     <span class="section-tag reveal">Preise</span>
-    <h2 class="section-title reveal" style="margin:0 auto">Weniger als eine Stunde Ihres <em>Zeitaufwands pro Monat.</em></h2>
-    <p class="section-sub reveal" style="margin:12px auto 0">1 Monat kostenlos testen. Keine Kreditkarte erforderlich. Jederzeit kündbar.</p>
+    <h2 class="section-title reveal" style="margin:0 auto">Weniger als eine Stunde<br><em>Ihres Zeitaufwands pro Monat.</em></h2>
+    <p class="section-sub reveal" style="margin:12px auto 0">Keine Kreditkarte. Keine Mindestlaufzeit. Einrichtung in 30 Minuten. Kein Risiko.</p>
 
     <!-- Billing Toggle -->
     <div class="billing-toggle-wrap reveal">
-      <span class="billing-label active" id="label-monthly">Monatlich</span>
-      <div class="toggle-track" id="billingToggle" onclick="toggleBilling()" role="switch" aria-checked="false">
-        <div class="toggle-thumb"></div>
+      <div class="billing-toggle-row">
+        <span class="billing-label active" id="label-monthly">Monatlich</span>
+        <div class="toggle-track" id="billingToggle" onclick="toggleBilling()" role="switch" aria-checked="false">
+          <div class="toggle-thumb"></div>
+        </div>
+        <span class="billing-label" id="label-yearly">Jährlich</span>
       </div>
-      <span class="billing-label" id="label-yearly">Jährlich</span>
-      <span class="billing-save-badge" id="saveBadge">2 Monate gratis</span>
+      <span class="billing-save-badge" id="saveBadge">Sie sparen bis zu 120 € im Jahr</span>
     </div>
 
     <div class="pricing-grid">
@@ -1636,7 +1659,7 @@
           <li>Plan per Link teilen – einsehbar ohne Login</li>
           <li>PDF & Excel Export</li>
           <li>Teambenachrichtigung per E-Mail</li>
-          <li>Prioritäts-Support</li>
+          <li>Prioritäts-Chat-Support</li>
         </ul>
         <a href="#demo" class="btn-pricing btn-pricing-white">1 Monat kostenlos testen →</a>
       </div>
@@ -1662,7 +1685,7 @@
 <section id="features" style="background:var(--card)">
   <div class="section-inner" style="text-align:center;">
     <span class="section-tag reveal">Leistungsübersicht</span>
-    <h2 class="section-title reveal" style="margin:0 auto;">Einfache Preise. <em>Keine Überraschungen.</em></h2>
+    <h2 class="section-title reveal" style="margin:0 auto;">Einfache Preise.<br><em>Keine Überraschungen.</em></h2>
     <p class="section-sub reveal" style="margin:12px auto 0;">Monatlich kündbar. Keine Einrichtungsgebühr. Kostenlos starten.</p>
 
     <div class="feat-table-wrap reveal">
@@ -1677,13 +1700,13 @@
         </thead>
         <tbody>
           <tr class="feat-group-row"><td colspan="4">Grundfunktionen</td></tr>
-          <tr><td>KI-Schichtplan generieren</td><td class="feat-check">✓</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
+          <tr><td>KI-Schichtplan generieren <span class="feat-highlight-badge">Highlight</span></td><td class="feat-check">✓</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
           <tr><td>Mitarbeiterverwaltung</td><td class="feat-check">✓</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
-          <tr><td>Wünsche & Abwesenheiten</td><td class="feat-check">✓</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
+          <tr><td>Wünsche & Abwesenheiten <span class="feat-highlight-badge">Highlight</span></td><td class="feat-check">✓</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
           <tr><td>Urlaub & Fehlzeiten</td><td class="feat-check">✓</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
           <tr><td>Manuelle Korrekturen</td><td class="feat-check">✓</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
           <tr class="feat-group-row"><td colspan="4">Pro-Features</td></tr>
-          <tr><td>Fairness-Reports (Samstage & Spätschichten)</td><td class="feat-no">—</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
+          <tr><td>Fairness-Reports (Samstage & Spätschichten) <span class="feat-highlight-badge">Highlight</span></td><td class="feat-no">—</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
           <tr><td>Stundenkonto Soll/Ist</td><td class="feat-no">—</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
           <tr><td>WhatsApp-Export</td><td class="feat-no">—</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
           <tr><td>Notdienst-Historie</td><td class="feat-no">—</td><td class="feat-check feat-col-pro">✓</td><td class="feat-check">✓</td></tr>
@@ -1699,7 +1722,7 @@
           <tr><td>Mehrere Standorte</td><td class="feat-no">—</td><td class="feat-no feat-col-pro">—</td><td class="feat-check">✓</td></tr>
           <tr><td>Springer & filialübergreifende Mitarbeiter</td><td class="feat-no">—</td><td class="feat-no feat-col-pro">—</td><td class="feat-check">✓</td></tr>
           <tr><td>DATEV-Export</td><td class="feat-no">—</td><td class="feat-no feat-col-pro">—</td><td class="feat-check">✓</td></tr>
-          <tr><td>Prioritäts-Support</td><td class="feat-no">—</td><td class="feat-no feat-col-pro">—</td><td class="feat-check">✓</td></tr>
+          <tr><td>Prioritäts-Chat-Support</td><td class="feat-no">—</td><td class="feat-no feat-col-pro">—</td><td class="feat-check">✓</td></tr>
         </tbody>
         <tfoot>
           <tr>
@@ -1720,6 +1743,10 @@
     <span class="section-tag reveal">FAQ</span>
     <h2 class="section-title reveal" style="margin:0 auto">Häufige Fragen.</h2>
     <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question" onclick="toggleFaq(this)">Funktioniert das wirklich für meine Apotheke?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Ja – genau dafür ist ApoShift gebaut. Sie hinterlegen für jede Mitarbeiterin Stundenkonto, Qualifikation, Wünsche und Abwesenheiten. Der Plan berücksichtigt alles automatisch: Teilzeit, Minijob, Urlaub, Feiertage, Ruhezeiten nach ArbZG. Wenn ein Wunsch nicht erfüllbar ist, zeigt ApoShift warum – transparent, keine Überraschungen.</p></div>
+      </div>
       <div class="faq-item reveal">
         <button class="faq-question" onclick="toggleFaq(this)">Wie lange dauert die Einrichtung?<span class="faq-icon">+</span></button>
         <div class="faq-answer"><p>Die einmalige Einrichtung dauert etwa 30 Minuten – Team erfassen, Öffnungszeiten hinterlegen, Mindeststärke festlegen. Danach erstellt ApoShift jeden neuen Dienstplan in rund 15 Minuten. Unser Support begleitet Sie beim Einstieg.</p></div>
@@ -1756,13 +1783,22 @@
 <section class="cta-section" id="demo">
   <div class="section-inner" style="position:relative;z-index:1">
     <span class="section-tag">Jetzt starten</span>
-    <h2>Nächste Woche schon entspannter planen –<br><em>Ihr erster Plan in 15 Minuten.</em></h2>
-    <p>1 Monat kostenlos testen. Kein Risiko, keine Kreditkarte. Die meisten Apotheken sind innerhalb einer Stunde startklar.</p>
+    <h2>In 15 Minuten fertig.<br><em>Nächste Woche stressfrei.</em></h2>
+    <p>E-Mail eintragen – Zugang kommt automatisch. Kein Telefonat, keine Wartezeit.</p>
     <div class="cta-form">
       <input type="email" class="cta-input" placeholder="ihre@apotheke.de">
       <button class="btn-cta">1 Monat kostenlos starten →</button>
     </div>
     <div class="cta-trust"><svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="5" width="8" height="6" rx="1.5"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg> KEIN SPAM · KEINE KREDITKARTE · 1 MONAT KOSTENLOS · JEDERZEIT KÜNDBAR</div>
+
+    <!-- Was passiert danach -->
+    <div class="cta-steps">
+      <div class="cta-step"><div class="cta-step-num">1</div><div class="cta-step-text"><strong>Zugang erhalten</strong><span>Sofort & automatisch</span></div></div>
+      <div class="cta-step-sep">→</div>
+      <div class="cta-step"><div class="cta-step-num">2</div><div class="cta-step-text"><strong>Team anlegen</strong><span>Ca. 30 Minuten, Schritt für Schritt</span></div></div>
+      <div class="cta-step-sep">→</div>
+      <div class="cta-step"><div class="cta-step-num">3</div><div class="cta-step-text"><strong>Ersten Plan generieren</strong><span>In wenigen Sekunden – fertig.</span></div></div>
+    </div>
   </div>
 </section>
 
@@ -1771,7 +1807,7 @@
   <div class="footer-inner">
     <a href="#" class="footer-logo">ApoShift</a>
     <div class="footer-links">
-      <a href="#">Datenschutz</a><a href="#">Impressum</a><a href="#">AGB</a><a href="#">Kontakt</a>
+      <a href="#">Datenschutz</a><a href="#">Impressum</a><a href="#">AGB</a>
     </div>
     <span class="footer-copy">© 2026 ApoShift. Alle Rechte vorbehalten.</span>
   </div>
@@ -1872,6 +1908,216 @@
     const isOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+<!-- ── CHATBOT ── -->
+<style>
+  #chatBtn {
+    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--accent-grad); border: none; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(37,99,235,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .2s, box-shadow .2s;
+  }
+  #chatBtn:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,99,235,0.5); }
+  #chatBtn svg { transition: opacity .2s; }
+  #chatWindow {
+    position: fixed; bottom: 96px; right: 28px; z-index: 9998;
+    width: 360px; max-height: 520px;
+    background: white; border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(0,0,0,.15), 0 2px 8px rgba(0,0,0,.08);
+    display: flex; flex-direction: column; overflow: hidden;
+    transform: scale(.92) translateY(12px); opacity: 0;
+    pointer-events: none; transition: all .25s cubic-bezier(.4,0,.2,1);
+  }
+  #chatWindow.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+  .chat-head {
+    background: var(--accent-grad); padding: 16px 18px;
+    display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+  }
+  .chat-head-avatar {
+    width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .chat-head-info { flex: 1; }
+  .chat-head-name { font-weight: 700; font-size: .9rem; color: white; }
+  .chat-head-status { font-size: .72rem; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: 5px; margin-top: 1px; }
+  .chat-head-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+  .chat-msgs {
+    flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px;
+    scrollbar-width: thin; scrollbar-color: #e2e8f0 transparent;
+  }
+  .chat-bubble {
+    max-width: 85%; padding: 10px 14px; border-radius: 16px;
+    font-size: .83rem; line-height: 1.55; animation: bubbleIn .2s ease;
+  }
+  @keyframes bubbleIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+  .chat-bubble.bot { background: #f1f5f9; color: var(--ink); border-bottom-left-radius: 4px; align-self: flex-start; }
+  .chat-bubble.user { background: var(--accent-grad); color: white; border-bottom-right-radius: 4px; align-self: flex-end; }
+  .chat-bubble.typing { background: #f1f5f9; align-self: flex-start; padding: 12px 16px; }
+  .chat-typing-dots { display: flex; gap: 4px; }
+  .chat-typing-dots span { width: 7px; height: 7px; border-radius: 50%; background: #94a3b8; animation: typingDot 1.2s infinite; }
+  .chat-typing-dots span:nth-child(2) { animation-delay: .2s; }
+  .chat-typing-dots span:nth-child(3) { animation-delay: .4s; }
+  @keyframes typingDot { 0%,60%,100% { transform:translateY(0); } 30% { transform:translateY(-5px); } }
+  .chat-chips { padding: 8px 16px 12px; display: flex; flex-wrap: wrap; gap: 6px; flex-shrink: 0; border-top: 1px solid #f1f5f9; }
+  .chat-chip {
+    font-size: .72rem; padding: 5px 10px; border-radius: 20px;
+    background: #f8fafc; border: 1px solid #e2e8f0; cursor: pointer;
+    color: var(--ink); font-weight: 500; transition: background .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .chat-chip:hover { background: #eff6ff; border-color: var(--accent); color: var(--accent); }
+  .chat-input-row { padding: 10px 12px; border-top: 1px solid #f1f5f9; display: flex; gap: 8px; flex-shrink: 0; }
+  .chat-input {
+    flex: 1; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px;
+    font-size: .83rem; outline: none; font-family: inherit; resize: none;
+    transition: border-color .2s;
+  }
+  .chat-input:focus { border-color: var(--accent); }
+  .chat-send {
+    width: 36px; height: 36px; border-radius: 10px; background: var(--accent-grad);
+    border: none; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: opacity .2s;
+  }
+  .chat-send:hover { opacity: .85; }
+  @media (max-width: 480px) {
+    /* handled in main 640px breakpoint above */
+  }
+</style>
+
+<!-- Chat Button -->
+<button id="chatBtn" onclick="toggleChat()" aria-label="Chat öffnen">
+  <svg id="chatIconOpen" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+  </svg>
+  <svg id="chatIconClose" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" style="display:none;">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
+</button>
+
+<!-- Chat Window -->
+<div id="chatWindow">
+  <div class="chat-head">
+    <div class="chat-head-avatar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </div>
+    <div class="chat-head-info">
+      <div class="chat-head-name">ApoShift Assistent</div>
+      <div class="chat-head-status"><div class="chat-head-dot"></div>Immer erreichbar</div>
+    </div>
+  </div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-chips" id="chatChips">
+    <div class="chat-chip" onclick="askChip(this)">Was kostet ApoShift?</div>
+    <div class="chat-chip" onclick="askChip(this)">Wie starte ich?</div>
+    <div class="chat-chip" onclick="askChip(this)">DSGVO & Datenschutz</div>
+    <div class="chat-chip" onclick="askChip(this)">Für wen ist ApoShift?</div>
+    <div class="chat-chip" onclick="askChip(this)">Was ist der KI-Einspringer?</div>
+  </div>
+  <div class="chat-input-row">
+    <textarea class="chat-input" id="chatInput" placeholder="Ihre Frage …" rows="1" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"></textarea>
+    <button class="chat-send" onclick="sendChat()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  let chatOpen = false;
+  let chatHistory = [];
+  const SYSTEM_PROMPT = `Du bist der freundliche Assistent von ApoShift, einer KI-gestützten Dienstplan-Software speziell für deutsche Apotheken. Beantworte Fragen kurz, klar und auf Deutsch. Nutze keine Markdown-Formatierung. Halte Antworten unter 4 Sätzen.
+
+Wichtige Fakten über ApoShift:
+- Starter-Paket: 49 €/Monat (bis 8 Mitarbeitende), jährlich 44 €/Monat
+- Pro-Paket: 99 €/Monat, jährlich 89 €/Monat – inkl. KI-Einspringer-Finder, Fairness-Reports, WhatsApp-Export
+- Expert-Paket: Auf Anfrage, für Filialverbünde
+- 1 Monat kostenlos testen, keine Kreditkarte nötig, jederzeit kündbar
+- DSGVO-konform, Server in Deutschland
+- Keine IT-Kenntnisse nötig, Einrichtung in ca. 30 Minuten
+- KI-Einspringer-Finder: findet bei Krankheitsausfall automatisch geeignete Springer, prüft ArbZG-Konformität, Ruhezeiten und Qualifikation
+- Dienstplan wird in ca. 12 Sekunden generiert
+- Wünsche und Abwesenheiten werden automatisch berücksichtigt
+- Für Fragen zu spezifischen Apotheken-Verträgen oder komplexen Sonderfällen empfehle den FAQ-Bereich oder die Testphase.`;
+
+  function toggleChat() {
+    chatOpen = !chatOpen;
+    document.getElementById('chatWindow').classList.toggle('open', chatOpen);
+    document.getElementById('chatIconOpen').style.display = chatOpen ? 'none' : 'block';
+    document.getElementById('chatIconClose').style.display = chatOpen ? 'block' : 'none';
+    if (chatOpen && document.getElementById('chatMsgs').children.length === 0) {
+      addBubble('bot', 'Hallo! Ich bin der ApoShift-Assistent. Wie kann ich Ihnen helfen?');
+    }
+  }
+
+  function addBubble(role, text) {
+    const msgs = document.getElementById('chatMsgs');
+    const b = document.createElement('div');
+    b.className = 'chat-bubble ' + role;
+    b.textContent = text;
+    msgs.appendChild(b);
+    msgs.scrollTop = msgs.scrollHeight;
+    return b;
+  }
+
+  function addTyping() {
+    const msgs = document.getElementById('chatMsgs');
+    const b = document.createElement('div');
+    b.className = 'chat-bubble typing';
+    b.id = 'typingIndicator';
+    b.innerHTML = '<div class="chat-typing-dots"><span></span><span></span><span></span></div>';
+    msgs.appendChild(b);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function removeTyping() {
+    const t = document.getElementById('typingIndicator');
+    if (t) t.remove();
+  }
+
+  async function askChip(el) {
+    const q = el.textContent;
+    document.getElementById('chatChips').style.display = 'none';
+    await sendMessage(q);
+  }
+
+  async function sendChat() {
+    const input = document.getElementById('chatInput');
+    const q = input.value.trim();
+    if (!q) return;
+    input.value = '';
+    input.style.height = 'auto';
+    document.getElementById('chatChips').style.display = 'none';
+    await sendMessage(q);
+  }
+
+  async function sendMessage(text) {
+    addBubble('user', text);
+    chatHistory.push({ role: 'user', content: text });
+    addTyping();
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 300,
+          system: SYSTEM_PROMPT,
+          messages: chatHistory
+        })
+      });
+      const data = await res.json();
+      const reply = data.content?.[0]?.text || 'Entschuldigung, das konnte ich nicht beantworten.';
+      removeTyping();
+      addBubble('bot', reply);
+      chatHistory.push({ role: 'assistant', content: reply });
+    } catch(e) {
+      removeTyping();
+      addBubble('bot', 'Entschuldigung, gerade nicht erreichbar. Bitte schauen Sie in unsere FAQ-Section.');
+    }
   }
 </script>
 </body>
